@@ -8,7 +8,12 @@ import Contacto from "../components/Contacto";
 
 export default function Home() {
   return (
-    <Layout>
+    <Layout
+      title="InnovaTech - Soluciones Tecnológicas Innovadoras"
+      description="InnovaTech es líder en soluciones tecnológicas avanzadas, ofreciendo servicios en robótica, desarrollo de software, energías renovables y más. Transformamos ideas en realidades innovadoras."
+      keywords="innovatech, tecnología, soluciones, desarrollo, robótica, energías renovables, automatización industrial, certificaciones tecnológicas"
+      image="/logo_blanco.png"
+    >
       <Hero />
       <About />
       <MVV />
