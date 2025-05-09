@@ -1,40 +1,28 @@
-import { z } from 'zod';
+import { Resend } from "resend";
+import { EmailTemplate } from "../../components/EmailTemplate";
 
-const contactoSchema = z.object({
-  nombre: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
-  empresa: z.string().optional(),
-  servicio: z.string().min(1, "Debes seleccionar un servicio"),
-  correo: z.string().email("Correo electrónico inválido"),
-  celular: z.string()
-    .regex(/^(\+?\d{0,3})?\s?[\d\s-]{10,}$/, "Número de teléfono inválido")
-    .optional(),
-  mensaje: z.string().min(10, "El mensaje debe tener al menos 10 caracteres"),
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+export default async function POST(req, res) {
+  const reqData = req.body;
+  const dataParse = JSON.parse(reqData);
+  const { data, error } = await resend.emails.send({
+    from: "Contacto InnovaTech <laureano@innovatechmex.com>",
+    to: ["laureano@innovatechmex.com"],
+    subject: "Nuevo mensaje de contacto",
+    react: EmailTemplate({
+      nombre: dataParse.nombre,
+      empresa: dataParse.empresa,
+      servicio: dataParse.servicio,
+      correo: dataParse.correo,
+      mensaje: dataParse.mensaje,
+      celular: dataParse.celular,
+    }),
+  });
+
+  if (error) {
+    return res.status(400).json(error);
   }
 
-  try {
-    // Validar los datos con Zod
-    const validatedData = contactoSchema.parse(req.body);
-
-    // Aquí iría la lógica para enviar el correo o guardar en base de datos
-    // Por ahora solo simulamos un delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    return res.status(200).json({ ok: true });
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      return res.status(400).json({ 
-        error: 'Datos inválidos', 
-        details: error.errors 
-      });
-    }
-    
-    return res.status(500).json({ 
-      error: 'Error interno del servidor' 
-    });
-  }
+  res.status(200).json(data);
 }

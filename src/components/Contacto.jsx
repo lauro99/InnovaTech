@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { z } from "zod";
@@ -47,15 +48,26 @@ export default function Contacto() {
     try {
       // Validar datos con Zod
       const validatedData = contactoSchema.parse(formData);
+      const { nombre, empresa, servicio, correo, celular, mensaje } = validatedData;
 
-      const res = await fetch("/api/contact", {
+      // Enviar datos al backend
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validatedData),
+        body: JSON.stringify({
+          nombre,
+          empresa,
+          servicio,
+          correo,
+          celular,
+          mensaje,
+        }),
       });
-      const data = await res.json();
 
-      if (data.ok) {
+      console.log(response);
+
+     
+
+      if (response.ok) {
         setExito("¡Mensaje enviado correctamente!");
         setFormData({
           nombre: "",
