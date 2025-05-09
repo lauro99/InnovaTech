@@ -1,10 +1,18 @@
+import { motion } from "framer-motion";
+
 export default function MVV() {
   return (
     <div className="relative bg-white py-40">
       <section className="max-w-6xl mx-auto py-16 px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
           {/* Misión */}
-          <div className="flex flex-col items-center text-center">
+          <motion.div
+            className="flex flex-col items-center text-center"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
             <div className="w-24 h-24 mb-6">
               <svg viewBox="0 0 100 100" className="w-full h-full">
                 <circle cx="50" cy="50" r="45" fill="#000052" />
@@ -17,10 +25,16 @@ export default function MVV() {
             <p className="text-xl text-[#000052]">
               Ofrecer soluciones tecnológicas de vanguardia
             </p>
-          </div>
+          </motion.div>
 
           {/* Visión */}
-          <div className="flex flex-col items-center text-center">
+          <motion.div
+            className="flex flex-col items-center text-center"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.7 }}
+          >
             <div className="w-24 h-24 mb-6">
               <svg viewBox="0 0 100 100" className="w-full h-full">
                 <circle cx="50" cy="50" r="40" fill="#000052" />
@@ -33,10 +47,16 @@ export default function MVV() {
             <p className="text-xl text-[#000052]">
               Ser reconocidos como líderes mundiales
             </p>
-          </div>
+          </motion.div>
 
           {/* Valores */}
-          <div className="flex flex-col items-center text-center">
+          <motion.div
+            className="flex flex-col items-center text-center"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+          >
             <div className="w-24 h-24 mb-6">
               <svg viewBox="0 0 100 100" className="w-full h-full">
                 <path d="M50 10 L90 90 L10 90 Z" fill="#000052" />
@@ -51,7 +71,7 @@ export default function MVV() {
               Sostenibilidad y<br />
               Colaboración
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 

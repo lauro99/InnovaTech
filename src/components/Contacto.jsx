@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { z } from "zod";
+import { motion } from "framer-motion";
 
 // Schema de validación con Zod
 const contactoSchema = z.object({
@@ -86,10 +87,22 @@ export default function Contacto() {
 
   return (
     <section className="py-16 px-4 max-w-2xl mx-auto">
-      <h2 className="text-3xl font-semibold mb-6 text-center">Contacto</h2>
-      <form
+      <motion.h2
+        className="text-3xl font-semibold mb-6 text-center"
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        Contacto
+      </motion.h2>
+      <motion.form
         className="flex flex-col gap-4 bg-white p-8 rounded-lg shadow-sm"
         onSubmit={handleSubmit}
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.2 }}
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
@@ -196,23 +209,36 @@ export default function Contacto() {
           )}
         </div>
 
-        <button
+        <motion.button
           type="submit"
           className="bg-[#000052] text-white py-2 rounded font-semibold hover:bg-[#C5009B] transition disabled:opacity-60"
           disabled={enviando}
+          whileTap={{ scale: 0.97 }}
         >
           {enviando ? "Enviando..." : "Enviar"}
-        </button>
+        </motion.button>
 
         {exito && (
-          <div className="text-green-600 text-center font-medium">{exito}</div>
+          <motion.div
+            className="text-green-600 text-center font-medium"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            {exito}
+          </motion.div>
         )}
         {errores.submit && (
-          <div className="text-red-600 text-center font-medium">
+          <motion.div
+            className="text-red-600 text-center font-medium"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             {errores.submit}
-          </div>
+          </motion.div>
         )}
-      </form>
+      </motion.form>
 
       <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center items-center text-[#000052]">
         <div className="flex items-center gap-2">
