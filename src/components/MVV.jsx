@@ -14,12 +14,7 @@ export default function MVV() {
             transition={{ duration: 0.7 }}
           >
             <div className="w-24 h-24 mb-6">
-              <svg viewBox="0 0 100 100" className="w-full h-full">
-                <circle cx="50" cy="50" r="45" fill="#000052" />
-                <circle cx="50" cy="50" r="20" fill="#00CBFA" />
-                <path d="M50 10 L50 45" stroke="#00CBFA" strokeWidth="6" />
-                <path d="M50 55 L50 90" stroke="#00CBFA" strokeWidth="6" />
-              </svg>
+            <img src="/mision.png" alt="InnovaTech" className="w-full h-full object-contain" />
             </div>
             <h3 className="text-3xl font-bold mb-4 text-[#000052]">MISIÓN</h3>
             <p className="text-xl text-[#000052]">
@@ -36,12 +31,7 @@ export default function MVV() {
             transition={{ delay: 0.2, duration: 0.7 }}
           >
             <div className="w-24 h-24 mb-6">
-              <svg viewBox="0 0 100 100" className="w-full h-full">
-                <circle cx="50" cy="50" r="40" fill="#000052" />
-                <path d="M50 20 L50 80" stroke="#00CBFA" strokeWidth="6" />
-                <path d="M30 40 L70 40" stroke="#00CBFA" strokeWidth="6" />
-                <path d="M30 60 L70 60" stroke="#00CBFA" strokeWidth="6" />
-              </svg>
+             <img src="/vision.png" alt="InnovaTech" className="w-full h-full object-contain" />
             </div>
             <h3 className="text-3xl font-bold mb-4 text-[#000052]">VISIÓN</h3>
             <p className="text-xl text-[#000052]">
@@ -58,11 +48,7 @@ export default function MVV() {
             transition={{ delay: 0.4, duration: 0.7 }}
           >
             <div className="w-24 h-24 mb-6">
-              <svg viewBox="0 0 100 100" className="w-full h-full">
-                <path d="M50 10 L90 90 L10 90 Z" fill="#000052" />
-                <path d="M50 30 L70 70 L30 70 Z" fill="#00CBFA" />
-                <path d="M50 20 L50 40" stroke="#00CBFA" strokeWidth="6" />
-              </svg>
+            <img src="/valores.png" alt="InnovaTech" className="w-full h-full object-contain" />
             </div>
             <h3 className="text-3xl font-bold mb-4 text-[#000052]">VALORES</h3>
             <p className="text-xl text-[#000052]">

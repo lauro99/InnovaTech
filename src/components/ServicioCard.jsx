@@ -13,8 +13,8 @@ export default function ServicioCard({ servicio }) {
       transition={{ duration: 0.5 }}
     >
       <div className="flex items-center gap-4 mb-2">
-        <servicio.icon className="w-7 h-7 text-[#000052] shrink-0" />
-        <span className={`${isParent ? 'text-lg font-semibold' : 'text-base font-medium'}`}>
+        <img src={servicio.icon} alt={servicio.label} className="h-10 md:h-16 text-[#000052] shrink-0" />
+        <span className={`${isParent ? 'text-xl md:text-3xl font-semibold' : 'text-base md:text-lg font-medium'}`}>
           {servicio.label}
         </span>
       </div>
@@ -31,7 +31,7 @@ export default function ServicioCard({ servicio }) {
               transition={{ duration: 0.4, delay: idx * 0.05 }}
             >
               <child.icon className="w-5 h-5 text-[#000052] shrink-0" />
-              <span className="text-sm">{child.label}</span>
+              <span className="text-sm md:text-lg">{child.label}</span>
             </motion.div>
           ))}
         </div>

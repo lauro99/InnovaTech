@@ -36,7 +36,7 @@ import {
 
 const servicios = [
   {
-    icon: Zap,
+    icon: "/electric.png",
     label: "Ingeniería Eléctrica",
     children: [
       { icon: Network, label: "Redes domésticas" },
@@ -44,7 +44,7 @@ const servicios = [
     ],
   },
   {
-    icon: Laptop,
+    icon: "/desarrollo.png",
     label: "Desarrollo de tecnología",
     children: [
       { icon: CircuitBoard, label: "Diseño de circuitos" },
@@ -55,7 +55,7 @@ const servicios = [
     ],
   },
   {
-    icon: Activity,
+    icon: "/bio.png",
     label: "Biomédica",
     children: [
       { icon: Wrench, label: "Diseño de prótesis" },
@@ -63,7 +63,7 @@ const servicios = [
     ],
   },
   {
-    icon: Settings,
+    icon: "/auto.png",
     label: "Automatización",
     children: [
       { icon: LayoutDashboard, label: "Estaciones de trabajo" },
@@ -78,7 +78,7 @@ const servicios = [
     ],
   },
   {
-    icon: PenTool,
+    icon: "/cad.png",
     label: "Diseño CAD/CAE",
     children: [
       { icon: RefreshCw, label: "Rediseño de piezas" },
@@ -90,7 +90,7 @@ const servicios = [
     ],
   },
   {
-    icon: BotMessageSquare,
+    icon: "/robotica.png",
     label: "Robótica",
     children: [
       { icon: HomeIcon, label: "Domótica (casas)" },
@@ -102,7 +102,7 @@ const servicios = [
     ],
   },
   {
-    icon: Leaf,
+    icon: "/renovable.png",
     label: "Renovable",
     children: [
       { icon: Droplets, label: "Osmosis Inversa" },
@@ -113,7 +113,7 @@ const servicios = [
     ],
   },
   {
-    icon: Award,
+    icon: "/certificacion.png",
     label: "Certificaciones",
     children: [
       { icon: GraduationCap, label: "Cursos en línea Solidworks" },
@@ -125,9 +125,9 @@ const servicios = [
 
 export default function Servicios() {
   return (
-    <section className="py-16 px-4 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-semibold mb-8 text-center">Servicios</h2>
-      <div className="grid grid-cols-1 gap-6">
+    <section className="py-5 px-4 max-w-6xl mx-auto">
+      <h2 className="text-3xl md:text-5xl font-semibold mb-10 md:mb-20 text-center">Servicios</h2>
+      <div className="grid grid-cols-1 gap-12">
         {servicios.map((servicio, idx) => (
           <ServicioCard key={idx} servicio={servicio} />
         ))}
