@@ -254,10 +254,10 @@ export default function Contacto() {
 
       <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center items-center text-[#000052]">
         <div className="flex items-center gap-2">
-          <Mail className="w-5 h-5" /> contacto@innovatech.com
+          <Mail className="w-5 h-5" /> contacto@innovatechmex.com
         </div>
         <div className="flex items-center gap-2">
-          <Phone className="w-5 h-5" /> +52 123 456 7890
+          <Phone className="w-5 h-5" /> +52 221 429 0985
         </div>
         <div className="flex items-center gap-2">
           <MapPin className="w-5 h-5" /> México
