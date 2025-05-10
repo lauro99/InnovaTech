@@ -24,7 +24,7 @@ export default function About() {
     { 
       icon: <Leaf className="h-8 w-8 text-[#00C2FF]" />,
       title: "Compromiso ecológico",
-      description: "Todas nuestras soluciones están diseñadas con un fuerte enfoque en la sostenibilidad ambiental."
+      description: "Todas nuestras soluciones están diseñadas con un fuerte enfoque en la sustentabilidad ambiental."
     }
   ];
 
@@ -36,7 +36,7 @@ export default function About() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <p className="mb-4">Fundada en 2025, InnovaTech nace como respuesta a la creciente necesidad de soluciones tecnológicas que concilien la innovación con la sostenibilidad. Somos una startup joven pero con grandes ambiciones y un equipo de profesionales con experiencia en el sector tecnológico.</p>
+        <p className="mb-4">Fundada en 2025, InnovaTech nace como respuesta a la creciente necesidad de soluciones tecnológicas que concilien la innovación con la sustentabilidad. Somos una startup joven pero con grandes ambiciones y un equipo de profesionales con experiencia en el sector tecnológico.</p>
       </motion.div>
     ),
     equipo: (
@@ -46,7 +46,7 @@ export default function About() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <p className="mb-4">Nuestro equipo está formado por jóvenes talentos y profesionales experimentados que han decidido unirse a este proyecto innovador. Contamos con ingenieros, desarrolladores, diseñadores y especialistas en sostenibilidad que comparten la visión de crear tecnología con propósito.</p>
+        <p className="mb-4">Nuestro equipo está formado por jóvenes talentos y profesionales experimentados que han decidido unirse a este proyecto innovador. Contamos con ingenieros, desarrolladores, diseñadores y especialistas en sostenibilidad y sustentabilidad que comparten la visión de crear tecnología con propósito.</p>
         <p>Lo que nos distingue es nuestra capacidad para pensar fuera de lo convencional, combinando conocimientos teóricos de vanguardia con un enfoque práctico orientado a resultados tangibles para nuestros clientes.</p>
       </motion.div>
     ),
@@ -117,7 +117,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.7 }}
             >
-              En InnovaTech nos encargamos de llevar a tu empresa a ser autosustentable e implementamos tecnología de última generación, teniendo siempre en cuenta el planeta tierra.
+              En InnovaTech nos encargamos de llevar tu empresa a ser autosustentable e implementamos tecnología de última generación, teniendo siempre en cuenta el planeta tierra.
             </motion.p>
               {/* Tabs para más información */}
             <div className="mt-8">
