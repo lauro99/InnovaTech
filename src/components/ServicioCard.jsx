@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { ChevronRight } from "lucide-react";
 
 export default function ServicioCard({ servicio }) {
   const isParent = servicio.children?.length > 0;
   const [isHovered, setIsHovered] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -16,20 +18,18 @@ export default function ServicioCard({ servicio }) {
     initial: { 
       opacity: 0, 
       y: 30,
-      rotateX: 15,
     },
     animate: { 
       opacity: 1, 
       y: 0,
-      rotateX: 0,
       transition: { 
-        duration: 0.6,
-        ease: [0.215, 0.61, 0.355, 1] // easeOutCubic
+        duration: 0.5,
+        ease: [0.25, 0.1, 0.25, 1] 
       }
     },
     hover: {
-      scale: 1.03,
-      boxShadow: "0 15px 35px rgba(0, 194, 255, 0.2)",
+      y: -5,
+      boxShadow: "0 15px 30px rgba(0, 194, 255, 0.15)",
       transition: {
         duration: 0.3,
         ease: "easeInOut"
@@ -39,178 +39,158 @@ export default function ServicioCard({ servicio }) {
 
   // Variantes para la animación de los elementos hijo
   const childVariants = {
-    initial: { 
+    hidden: { 
       opacity: 0, 
-      y: 15,
-      x: 10
+      height: 0,
+      margin: 0,
+      padding: 0
     },
-    animate: (i) => ({ 
-      opacity: 1, 
-      y: 0,
-      x: 0,
-      transition: { 
-        duration: 0.45, 
-        delay: 0.1 + (i * 0.08),
-        ease: "easeOut" 
-      }
-    }),
-    hover: {
-      scale: 1.05,
-      backgroundColor: "rgba(0, 194, 255, 0.1)",
-      boxShadow: "0 4px 12px rgba(0, 0, 82, 0.1)",
+    visible: { 
+      opacity: 1,
+      height: "auto",
+      margin: "0.5rem 0",
+      padding: "0.75rem",
       transition: {
-        duration: 0.2
+        duration: 0.4,
+        staggerChildren: 0.1
       }
     }
   };
+
+  const childItemVariants = {
+    hidden: { opacity: 0, x: -10 },
+    visible: (i) => ({ 
+      opacity: 1, 
+      x: 0,
+      transition: { 
+        duration: 0.3, 
+        delay: i * 0.05
+      }
+    })
+  };
+
   return (
     <motion.div
-      className={`relative overflow-hidden p-6 bg-gradient-to-b from-white to-slate-50 rounded-2xl ${
-        isParent 
-          ? 'col-span-full shadow-lg border border-[#00C2FF]/20' 
-          : 'shadow-md border border-slate-100'
-      }`}
+      className={`relative overflow-hidden bg-white rounded-2xl h-full
+        ${isParent 
+          ? 'border border-slate-200/80 shadow-lg' 
+          : 'border border-slate-100 shadow-md'
+        } transition-all duration-300`}
       variants={cardVariants}
       initial="initial"
-      whileInView="animate"
+      animate="animate"
       whileHover="hover"
-      viewport={{ once: true }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      style={{
-        perspective: "1000px"
-      }}
     >
       {/* Elementos decorativos de fondo */}
       <motion.div 
-        className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-gradient-to-tr from-[#00C2FF]/10 to-transparent -z-10"
-        animate={isHovered ? { scale: 1.3, opacity: 0.7 } : { scale: 1, opacity: 0.3 }}
-        transition={{ duration: 0.5 }}
-      />
-      
-      <motion.div
-        className="absolute -top-24 -left-24 w-48 h-48 rounded-full bg-[#000052]/5 -z-10 blur-3xl"
-        animate={isHovered ? { opacity: 0.8 } : { opacity: 0.3 }}
-        transition={{ duration: 0.5 }}
-      />
-      
-      <motion.div 
-        className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00C2FF] to-[#000052] origin-left"
+        className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-[#00C2FF] to-[#000052]"
         initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
+        animate={{ scaleX: 1 }}
         transition={{ delay: 0.2, duration: 0.8 }}
       />
       
-      <motion.div 
-        className="absolute top-0 right-0 w-24 h-24 -z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: mounted ? 1 : 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-      >
-        {isParent && (
-          <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M100 0L100 30C100 37.3152 100 40.9728 98.3679 43.8863C96.9047 46.4579 94.4579 48.5047 91.8863 49.9679C88.9728 51.6 85.3152 51.6 78 51.6H0" stroke="#00C2FF" strokeOpacity="0.2" strokeWidth="2"/>
-          </svg>
-        )}
-      </motion.div>
-
-      <div className="flex flex-col md:flex-row md:items-center gap-6 mb-6">
-        <motion.div
-          className={`flex items-center justify-center rounded-xl 
+      <div className="p-6 h-full flex flex-col">
+        <div className="flex items-start gap-4 mb-4">
+          <div className={`flex items-center justify-center rounded-xl p-3 w-16 h-16
             ${isParent 
-              ? 'bg-gradient-to-br from-[#000052] to-[#000046] p-3 md:p-4' 
-              : 'bg-[#000052]/10 p-3 md:p-4'
+              ? 'bg-gradient-to-br from-[#000052] to-[#001f52]' 
+              : 'bg-gradient-to-br from-[#00C2FF]/20 to-[#000052]/10 '
             }`}
-          whileHover={{ 
-            rotate: [0, -5, 5, -3, 0],
-            scale: 1.05,
-            transition: { duration: 0.5 }
-          }}
-        >
-          <img 
-            src={servicio.icon} 
-            alt={servicio.label} 
-            className={`h-12 md:h-16 object-contain ${isParent ? 'brightness-0 invert' : ''}`} 
-          />
-        </motion.div>
-        <motion.div 
-          className="flex flex-col"
-          animate={isHovered ? { x: 5 } : { x: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <span className={`${
-            isParent 
-              ? 'text-2xl md:text-3xl font-bold' 
-              : 'text-xl md:text-2xl font-semibold'
-            } text-[#000052]`}>
-            {servicio.label}
-          </span>
-          {!isParent && (
+          >
+            <img 
+              src={servicio.icon} 
+              alt={servicio.label} 
+              className={`h-10 w-10 object-contain ${isParent ? 'brightness-0 invert' : ''}`} 
+            />
+          </div>
+          <div className="flex-1">
+            <h3 className={`text-xl font-bold text-[#000052] transition-all
+              ${isHovered ? 'translate-x-1' : ''}
+              ${isParent ? 'text-xl md:text-2xl' : 'text-lg md:text-xl'}`}
+            >
+              {servicio.label}
+            </h3>
             <motion.div
-              className="h-0.5 mt-1 w-0 bg-[#00C2FF] rounded-full"
-              animate={isHovered ? { width: "60%" } : { width: "0%" }}
+              className="h-0.5 mt-1.5 bg-[#00C2FF] rounded-full"
+              initial={{ width: "0%" }}
+              animate={isHovered ? { width: "40%" } : { width: "0%" }}
               transition={{ duration: 0.3 }}
             />
-          )}
-          {isParent && (
-            <span className="text-sm text-slate-500 mt-1 max-w-lg">
-              Servicios profesionales con la más alta calidad y tecnología de punta
-            </span>
-          )}
-        </motion.div>
-      </div>      {isParent && (
-        <>
-          <motion.div 
-            className="w-full h-px bg-slate-200 my-4"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-          />
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-            {servicio.children.map((child, idx) => (
-              <motion.div
-                key={idx}
-                className="group flex items-center gap-4 p-5 bg-white border border-slate-100 rounded-xl shadow-sm backdrop-blur-sm relative overflow-hidden"
-                variants={childVariants}
-                custom={idx}
-                initial="initial"
-                whileInView="animate"
-                whileHover="hover"
-                viewport={{ once: true }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#00C2FF]/0 to-[#00C2FF]/0 group-hover:from-[#00C2FF]/5 group-hover:to-[#000052]/5 transition-colors duration-300" />
-                
-                <motion.div 
-                  className="relative z-10 flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-[#00C2FF]/10 to-[#000052]/10"
-                  whileHover={{
-                    scale: 1.1,
-                    transition: { duration: 0.2 }
-                  }}
-                >
-                  <child.icon className="w-5 h-5 text-[#00C2FF]" />
-                </motion.div>
-                
-                <div className="relative z-10 flex flex-col">
-                  <span className="text-base md:text-lg font-medium text-[#000052]">{child.label}</span>
-                  <motion.div
-                    className="h-0.5 w-0 bg-[#00C2FF]/50 rounded-full mt-0.5"
-                    initial={{ width: "0%" }}
-                    whileHover={{ width: "80%" }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </div>
-                
-                <motion.div 
-                  className="absolute bottom-0 right-0 w-8 h-8 rounded-tl-xl bg-[#000052]/5 -z-0 opacity-0 group-hover:opacity-100"
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.div>
-            ))}
           </div>
-        </>
-      )}
+          
+          {isParent && (
+            <motion.button
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors"
+              onClick={() => setIsExpanded(!isExpanded)}
+              whileTap={{ scale: 0.9 }}
+              aria-label={isExpanded ? "Colapsar servicios" : "Expandir servicios"}
+            >
+              <motion.div
+                animate={{ rotate: isExpanded ? 90 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ChevronRight className="w-5 h-5 text-[#000052]" />
+              </motion.div>
+            </motion.button>
+          )}
+        </div>
+        
+        {/* Descripción o mensaje para servicios principales */}
+        {isParent && !isExpanded && (
+          <p className="text-sm text-slate-500 flex-grow">
+            Ofrecemos soluciones profesionales con la más alta calidad y tecnología de punta
+          </p>
+        )}
+        
+        {/* Lista de servicios (expandible) */}
+        {isParent && (
+          <motion.div
+            className="w-full overflow-hidden"
+            variants={{
+              collapsed: { height: 0, opacity: 0 },
+              expanded: { height: "auto", opacity: 1 }
+            }}
+            initial="collapsed"
+            animate={isExpanded ? "expanded" : "collapsed"}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+          >
+            <div className="w-full h-px bg-slate-100 my-4" />
+            
+            <div className="grid grid-cols-1 gap-2 mt-2">
+              {servicio.children.map((child, idx) => (
+                <motion.div
+                  key={idx}
+                  className="flex items-center gap-3 p-3 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors"
+                  custom={idx}
+                  variants={childItemVariants}
+                  initial="hidden"
+                  animate={isExpanded ? "visible" : "hidden"}
+                >
+                  <div className="flex items-center justify-center w-8 h-8 rounded-md bg-[#000052]/10">
+                    <child.icon className="w-4 h-4 text-[#00C2FF]" />
+                  </div>
+                  <span className="text-sm font-medium text-slate-700">{child.label}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+        
+        {/* Botón de ver más para tarjetas sin hijos */}
+        {!isParent && (
+          <div className="mt-auto pt-4">
+            <button
+              className="text-sm font-medium text-[#00C2FF] hover:text-[#000052] transition-colors flex items-center gap-1"
+              onClick={() => {}}
+            >
+              Más información
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        )}
+      </div>
     </motion.div>
   );
 }
