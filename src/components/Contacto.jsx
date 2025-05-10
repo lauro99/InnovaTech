@@ -215,7 +215,7 @@ export default function Contacto() {
                 type="text"
                 name="empresa"
                 id="empresa"
-                placeholder="Nombre de tu empresa (opcional)"
+                placeholder="Nombre de tu empresa"
                 className="w-full p-3 pl-10 rounded-lg border border-slate-200 bg-white/80 outline-none focus:border-[#00C2FF] transition-all duration-200"
                 value={formData.empresa}
                 onChange={handleChange}
@@ -243,7 +243,7 @@ export default function Contacto() {
                 type="tel"
                 name="celular"
                 id="celular"
-                placeholder="Tu número de teléfono (opcional)"
+                placeholder="Tu número de teléfono"
                 className={`w-full p-3 pl-10 rounded-lg border bg-white/80 outline-none transition-all duration-200 ${
                   errores.celular
                     ? "border-red-500 focus:border-red-500"
