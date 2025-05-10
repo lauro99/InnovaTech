@@ -68,14 +68,13 @@ export default function ServicioCard({ servicio }) {
       }
     })
   };
-
   return (
     <motion.div
       className={`relative overflow-hidden bg-white rounded-2xl h-full
         ${isParent 
           ? 'border border-slate-200/80 shadow-lg' 
           : 'border border-slate-100 shadow-md'
-        } transition-all duration-300`}
+        } transition-all duration-300 w-full`}
       variants={cardVariants}
       initial="initial"
       animate="animate"
@@ -90,10 +89,9 @@ export default function ServicioCard({ servicio }) {
         animate={{ scaleX: 1 }}
         transition={{ delay: 0.2, duration: 0.8 }}
       />
-      
-      <div className="p-6 h-full flex flex-col">
+        <div className="p-6 h-full flex flex-col">
         <div className="flex items-start gap-4 mb-4">
-          <div className={`flex items-center justify-center rounded-xl p-3 w-16 h-16
+          <div className={`flex-shrink-0 flex items-center justify-center rounded-xl p-3 w-16 h-16
             ${isParent 
               ? 'bg-gradient-to-br from-[#000052] to-[#001f52]' 
               : 'bg-gradient-to-br from-[#00C2FF]/20 to-[#000052]/10 '
@@ -104,11 +102,11 @@ export default function ServicioCard({ servicio }) {
               alt={servicio.label} 
               className={`h-10 w-10 object-contain ${isParent ? 'brightness-0 invert' : ''}`} 
             />
-          </div>
-          <div className="flex-1">
+          </div>          <div className="flex-1 min-w-0">
             <h3 className={`text-xl font-bold text-[#000052] transition-all
               ${isHovered ? 'translate-x-1' : ''}
               ${isParent ? 'text-xl md:text-2xl' : 'text-lg md:text-xl'}`}
+              title={servicio.label}
             >
               {servicio.label}
             </h3>
@@ -136,10 +134,9 @@ export default function ServicioCard({ servicio }) {
             </motion.button>
           )}
         </div>
-        
-        {/* Descripción o mensaje para servicios principales */}
+          {/* Descripción o mensaje para servicios principales */}
         {isParent && !isExpanded && (
-          <p className="text-sm text-slate-500 flex-grow">
+          <p className="text-sm text-slate-500 flex-grow line-clamp-3">
             Ofrecemos soluciones profesionales con la más alta calidad y tecnología de punta
           </p>
         )}
