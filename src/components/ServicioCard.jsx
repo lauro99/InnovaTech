@@ -1,19 +1,42 @@
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import { ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { ChevronRight, X } from "lucide-react";
 
 export default function ServicioCard({ servicio }) {
   const isParent = servicio.children?.length > 0;
   const [isHovered, setIsHovered] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const cardRef = useRef(null);
+  
+  // Reset expanded state when service changes (important for filtering)
+  useEffect(() => {
+    setIsExpanded(false);
+  }, [servicio]);
 
   useEffect(() => {
     setMounted(true);
     return () => setMounted(false);
   }, []);
 
-  // Variantes para animación de la tarjeta principal
+  // Cerrar el menú cuando se hace clic fuera de la tarjeta
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (cardRef.current && !cardRef.current.contains(event.target)) {
+        setIsExpanded(false);
+      }
+    };
+
+    if (isExpanded) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isExpanded]);
+
+  // Variantes para animación de la tarjeta
   const cardVariants = {
     initial: { 
       opacity: 0, 
@@ -29,30 +52,10 @@ export default function ServicioCard({ servicio }) {
     },
     hover: {
       y: -5,
-      boxShadow: "0 15px 30px rgba(0, 194, 255, 0.15)",
+      scale: 1.05,
       transition: {
         duration: 0.3,
         ease: "easeInOut"
-      }
-    }
-  };
-
-  // Variantes para la animación de los elementos hijo
-  const childVariants = {
-    hidden: { 
-      opacity: 0, 
-      height: 0,
-      margin: 0,
-      padding: 0
-    },
-    visible: { 
-      opacity: 1,
-      height: "auto",
-      margin: "0.5rem 0",
-      padding: "0.75rem",
-      transition: {
-        duration: 0.4,
-        staggerChildren: 0.1
       }
     }
   };
@@ -68,126 +71,145 @@ export default function ServicioCard({ servicio }) {
       }
     })
   };
-  return (
-    <motion.div
-      className={`relative overflow-hidden bg-white rounded-2xl h-full
-        ${isParent 
-          ? 'border border-slate-200/80 shadow-lg' 
-          : 'border border-slate-100 shadow-md'
-        } transition-all duration-300 w-full`}
-      variants={cardVariants}
-      initial="initial"
-      animate="animate"
-      whileHover="hover"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-    >
-      {/* Elementos decorativos de fondo */}
-      <motion.div 
-        className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-[#00C2FF] to-[#000052]"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ delay: 0.2, duration: 0.8 }}
-      />
-        <div className="p-6 h-full flex flex-col">
-        <div className="flex items-start gap-4 mb-4">
-          <div className={`flex-shrink-0 flex items-center justify-center rounded-xl p-3 w-16 h-16
-            ${isParent 
-              ? 'bg-gradient-to-br from-[#000052] to-[#001f52]' 
-              : 'bg-gradient-to-br from-[#00C2FF]/20 to-[#000052]/10 '
-            }`}
-          >
-            <img 
-              src={servicio.icon} 
-              alt={servicio.label} 
-              className={`h-10 w-10 object-contain ${isParent ? 'brightness-0 invert' : ''}`} 
-            />
-          </div>          <div className="flex-1 min-w-0">
-            <h3 className={`text-xl font-bold text-[#000052] transition-all
-              ${isHovered ? 'translate-x-1' : ''}
-              ${isParent ? 'text-xl md:text-2xl' : 'text-lg md:text-xl'}`}
-              title={servicio.label}
-            >
-              {servicio.label}
-            </h3>
-            <motion.div
-              className="h-0.5 mt-1.5 bg-[#00C2FF] rounded-full"
-              initial={{ width: "0%" }}
-              animate={isHovered ? { width: "40%" } : { width: "0%" }}
-              transition={{ duration: 0.3 }}
-            />
-          </div>
-          
-          {isParent && (
-            <motion.button
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors"
-              onClick={() => setIsExpanded(!isExpanded)}
-              whileTap={{ scale: 0.9 }}
-              aria-label={isExpanded ? "Colapsar servicios" : "Expandir servicios"}
-            >
-              <motion.div
-                animate={{ rotate: isExpanded ? 90 : 0 }}
-                transition={{ duration: 0.3 }}
+
+  // Asignar colores basados en categoría (para usar en el modal)
+  let themeColor;
+  switch(servicio.categoria) {
+    case "electric":
+      themeColor = "#00C2FF"; // Azul
+      break;
+    case "desarrollo":
+      themeColor = "#96c93d"; // Verde
+      break;
+    case "robotica":
+      themeColor = "#000052"; // Azul oscuro
+      break;
+    case "renovable":
+      themeColor = "#C5299B"; // Púrpura
+      break;
+    case "formacion":
+      themeColor = "#FFA500"; // Naranja
+      break;
+    default:
+      themeColor = "#00C2FF";
+  }
+
+  // Renderizar un modal para los servicios hijos
+  const renderModal = () => {
+    if (!isParent || !isExpanded) return null;
+    
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+        <div 
+          className="bg-white rounded-xl shadow-2xl p-5 w-full max-w-md mx-4 relative"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div 
+                className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden shadow-md"
               >
-                <ChevronRight className="w-5 h-5 text-[#000052]" />
-              </motion.div>
-            </motion.button>
-          )}
-        </div>
-          {/* Descripción o mensaje para servicios principales */}
-        {isParent && !isExpanded && (
-          <p className="text-sm text-slate-500 flex-grow line-clamp-3">
-            Ofrecemos soluciones profesionales con la más alta calidad y tecnología de punta
-          </p>
-        )}
-        
-        {/* Lista de servicios (expandible) */}
-        {isParent && (
-          <motion.div
-            className="w-full overflow-hidden"
-            variants={{
-              collapsed: { height: 0, opacity: 0 },
-              expanded: { height: "auto", opacity: 1 }
-            }}
-            initial="collapsed"
-            animate={isExpanded ? "expanded" : "collapsed"}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-          >
-            <div className="w-full h-px bg-slate-100 my-4" />
-            
-            <div className="grid grid-cols-1 gap-2 mt-2">
-              {servicio.children.map((child, idx) => (
-                <motion.div
-                  key={idx}
-                  className="flex items-center gap-3 p-3 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors"
-                  custom={idx}
-                  variants={childItemVariants}
-                  initial="hidden"
-                  animate={isExpanded ? "visible" : "hidden"}
-                >
-                  <div className="flex items-center justify-center w-8 h-8 rounded-md bg-[#000052]/10">
-                    <child.icon className="w-4 h-4 text-[#00C2FF]" />
-                  </div>
-                  <span className="text-sm font-medium text-slate-700">{child.label}</span>
-                </motion.div>
-              ))}
+                <img 
+                  src={servicio.icon}
+                  alt={servicio.label}
+                  className="h-8 w-8 object-contain"
+                />
+              </div>
+              <h3 className="font-bold text-xl text-gray-800">{servicio.label}</h3>
             </div>
-          </motion.div>
-        )}
-        
-        {/* Botón de ver más para tarjetas sin hijos */}
-        {!isParent && (
-          <div className="mt-auto pt-4">
-            <button
-              className="text-sm font-medium text-[#00C2FF] hover:text-[#000052] transition-colors flex items-center gap-1"
-              onClick={() => {}}
+            <button 
+              className="p-1 rounded-full hover:bg-gray-100 transition-colors"
+              onClick={() => setIsExpanded(false)}
             >
-              Más información
-              <ChevronRight className="w-4 h-4" />
+              <X className="w-5 h-5 text-gray-700" />
             </button>
           </div>
-        )}
+          
+          <div className="h-px w-full bg-gray-200 mb-4"></div>
+          
+          <div className="max-h-[60vh] overflow-y-auto">
+            {servicio.children.map((child, idx) => (
+              <motion.div
+                key={idx}
+                className="flex items-center gap-3 p-3 hover:bg-slate-50 rounded-lg transition-colors"
+                custom={idx}
+                variants={childItemVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <div className="flex items-center justify-center w-8 h-8 rounded-full" style={{ backgroundColor: `${themeColor}20` }}>
+                  <child.icon className="w-4 h-4" style={{ color: themeColor }} />
+                </div>
+                <span className="text-base font-medium text-slate-700">{child.label}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
-    </motion.div>
+    );
+  };
+
+  return (
+    <>      <motion.div
+        ref={cardRef}
+        className="relative flex flex-col items-center justify-center gap-2"
+        variants={cardVariants}
+        initial="initial"
+        animate="animate"
+        whileHover="hover"
+        key={servicio.label} // Add key for proper animation reset
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+      >        {/* Imagen circular */}
+        <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-white shadow-lg flex items-center justify-center overflow-hidden p-2">
+          <img 
+            src={servicio.icon} 
+            alt={servicio.label}
+            className="w-16 h-16 md:w-20 md:h-20 object-contain"
+            loading="eager" // Eager loading for immediate visibility
+            onError={(e) => {
+              // Fallback if image fails to load
+              e.target.src = "/default-service-icon.png";
+              e.target.onerror = null;
+            }}
+          />
+        </div>
+        
+        {/* Etiqueta del servicio */}
+        <h3 
+          className="text-center font-medium text-sm md:text-base"
+          title={servicio.label}
+        >
+          {servicio.label}
+        </h3>
+
+        {/* Indicador visual de que hay elementos adicionales */}
+        {isParent && (
+          <div 
+            className="absolute top-0 right-0 m-1 w-5 h-5 rounded-full bg-white flex items-center justify-center cursor-pointer shadow-md hover:bg-gray-100 transition-colors"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsExpanded(true);
+            }}
+          >
+            <ChevronRight className="w-3 h-3" style={{ color: themeColor }} />
+          </div>
+        )}
+
+        {/* Botón invisible que cubre toda la tarjeta para expandir detalles */}
+        {isParent && (
+          <button
+            className="absolute inset-0 w-full h-full z-10 cursor-pointer opacity-0"
+            onClick={() => setIsExpanded(true)}
+            aria-label={isExpanded ? "Colapsar servicios" : "Expandir servicios"}
+          />
+        )}
+      </motion.div>
+
+      {/* Modal que se muestra cuando se expande (fuera del flujo normal para evitar solapamiento) */}
+      <AnimatePresence>
+        {isExpanded && renderModal()}
+      </AnimatePresence>
+    </>
   );
 }
