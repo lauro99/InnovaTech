@@ -19,7 +19,7 @@ export default function About() {
     },    { 
       icon: <Zap className="h-8 w-8 text-[#00C2FF]" />,
       title: "Soluciones a medida",
-      description: "Desarrollamos estrategias personalizadas según las necesidades específicas de cada cliente."
+      description: "Desarrollamoss estrategias personalizadas según las necesidades específicas de cada cliente."
     },
     { 
       icon: <Leaf className="h-8 w-8 text-[#00C2FF]" />,
