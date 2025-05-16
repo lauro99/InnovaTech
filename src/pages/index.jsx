@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Layout from "../components/Layout";
 import Hero from "../components/Hero";
 import About from "../components/About";
@@ -13,7 +12,7 @@ export default function Home() {
       title="InnovaTech - Soluciones Tecnológicas Innovadoras"
       description="InnovaTech es líder en soluciones tecnológicas avanzadas, ofreciendo servicios en robótica, desarrollo de software, energías renovables y más. Transformamos ideas en realidades innovadoras."
       keywords="automatización, innovatech, tecnología, soluciones, desarrollo, robótica, energías renovables, automatización industrial, certificaciones tecnológicas, proceso de trabajo"
-      image="/logo_blanco.png"
+      image="/favicon.png"
     >
       <Hero />
       <About />
