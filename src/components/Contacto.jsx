@@ -219,7 +219,7 @@ export default function Contacto() {
                   <div>
                     <h4 className="font-medium text-slate-700">Email</h4>
                     <a
-                      href="mailto:contacto@innovatechmex.com"
+                      href="mailto:ventas@innovatechmex.com"
                       className="text-[#00ADBF] hover:underline"
                     >
                       contacto@innovatechmex.com
@@ -261,9 +261,7 @@ export default function Contacto() {
                   <div>
                     <h4 className="font-medium text-slate-700">Ubicación</h4>
                     <p className="text-[#000052]">
-                      Ciudad de México, México
-                      <br />
-                      CP 03100
+                      San Pedro Cholula, Puebla
                     </p>
                   </div>
                 </motion.div>
