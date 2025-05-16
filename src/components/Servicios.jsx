@@ -46,8 +46,7 @@ const primeraFila = [
       { icon: Network, label: "Redes domésticas" },
       { icon: Network, label: "Redes industriales" },
     ],
-  },
-  {
+  },  {
     icon: "/desarrollo.png",
     label: "Desarrollo de tecnología",
     categoria: "desarrollo",
@@ -57,6 +56,7 @@ const primeraFila = [
       { icon: LayoutDashboard, label: "Desarrollo de páginas web" },
       { icon: Cpu, label: "Desarrollo y diseño de PCV" },
       { icon: FlaskConical, label: "Análisis de circuitos" },
+      { icon: Package, label: "Impresión 3D" },
     ],
   },
   {
