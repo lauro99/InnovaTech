@@ -144,7 +144,7 @@ export default function Contacto() {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden" id="contacto">
       {/* Elementos decorativos de fondo mejorados */}
       <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-[#00C2FF]/5 blur-[100px] -z-10"></div>
       <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-[#000052]/5 blur-[80px] -z-10"></div>
