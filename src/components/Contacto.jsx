@@ -51,9 +51,6 @@ export default function Contacto() {
       const { nombre, empresa, servicio, correo, celular, mensaje } = validatedData;      // Enviar datos al backend
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
         body: JSON.stringify({
           nombre,
           empresa,
