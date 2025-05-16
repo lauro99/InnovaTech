@@ -194,62 +194,10 @@ export default function MVV() {
         </div>
       </section>      {/* Circuito tecnológico en la parte inferior */}
       <div className="absolute bottom-0 left-0 w-full">
-        <svg width="100%" height="120" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <motion.path 
-            d="M0,60 C240,30 480,10 720,60 C960,110 1200,100 1440,60 L1440,120 L0,120 Z" 
-            fill="#000052"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          />
-          
-          {/* Líneas de circuito */}
-          <motion.path 
-            d="M0,60 C240,30 480,10 720,60 C960,110 1200,100 1440,60" 
-            stroke="#00C2FF" 
-            strokeWidth="1"
-            strokeDasharray="10 5"
-            strokeOpacity="0.5"
-            fill="none"
-            variants={lineVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          />
-          
-          {/* Círculos decorativos */}
-          <motion.circle 
-            cx="240" 
-            cy="40" 
-            r="4" 
-            fill="#00C2FF"
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8, duration: 0.4 }}
-          />
-          <motion.circle 
-            cx="720" 
-            cy="60" 
-            r="6" 
-            fill="#00C2FF"
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1, duration: 0.4 }}
-          />
-          <motion.circle 
-            cx="1200" 
-            cy="50" 
-            r="4" 
-            fill="#00C2FF"
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1.2, duration: 0.4 }}
-          />
-        </svg>
+      
+        
+
+
       </div>
     </div>
   );

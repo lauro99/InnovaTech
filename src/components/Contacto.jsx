@@ -39,7 +39,7 @@ export default function Contacto() {
     }
   };
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
     setEnviando(true);
     setExito("");
@@ -48,7 +48,9 @@ export default function Contacto() {
     try {
       // Validar datos con Zod
       const validatedData = contactoSchema.parse(formData);
-      const { nombre, empresa, servicio, correo, celular, mensaje } = validatedData;      // Enviar datos al backend
+      const { nombre, empresa, servicio, correo, celular, mensaje } = validatedData;
+
+      // Enviar datos al backend
       const response = await fetch("/api/contact", {
         method: "POST",
         body: JSON.stringify({
@@ -62,8 +64,8 @@ export default function Contacto() {
       });
 
       console.log(response);
-      
-      const data = await response.json().catch(() => ({}));
+
+     
 
       if (response.ok) {
         setExito("¡Mensaje enviado correctamente!");
@@ -94,6 +96,7 @@ export default function Contacto() {
       setEnviando(false);
     }
   };
+
   // Variantes para animación de elementos del formulario
   const formItemVariants = {
     hidden: { opacity: 0, y: 15 },

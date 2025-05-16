@@ -177,13 +177,50 @@ export default function Servicios() {
     : servicios.filter(serv => serv.categoria === activeCategory);
   
   return (
-    <section id="servicios" className="py-20 px-4 max-w-7xl mx-auto relative">
+    <section id="servicios" className="w-full  relative">
+      <svg width="100%" height="120" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <g transform="rotate(180, 720, 60)">
+    <path 
+      d="M0,60 C240,30 480,10 720,60 C960,110 1200,100 1440,60 L1440,120 L0,120 Z" 
+      fill="#F2F6FD"
+    />
+    
+    <path 
+      d="M0,60 C240,30 480,10 720,60 C960,110 1200,100 1440,60" 
+      stroke="#00C2FF" 
+      strokeWidth="1"
+      strokeDasharray="10 5"
+      strokeOpacity="0.5"
+      fill="none"
+    />
+    
+    <circle 
+      cx="240" 
+      cy="40" 
+      r="4" 
+      fill="#00C2FF"
+    />
+    <circle 
+      cx="720" 
+      cy="60" 
+      r="6" 
+      fill="#00C2FF"
+    />
+    <circle 
+      cx="1200" 
+      cy="50" 
+      r="4" 
+      fill="#00C2FF"
+    />
+  </g>
+</svg>
+
       {/* Elementos decorativos */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-96 bg-gradient-to-b from-blue-50 to-transparent rounded-full blur-3xl opacity-50 -z-10" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tr from-[#00C2FF]/10 to-transparent rounded-full blur-xl -z-10" />
       <div className="absolute top-1/3 left-0 w-48 h-48 bg-gradient-to-tl from-[#000052]/10 to-transparent rounded-full blur-xl -z-10" />
       
-      <div className="text-center mb-16">
+      <div className="text-center mb-16 p-5">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
