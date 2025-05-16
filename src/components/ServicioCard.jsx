@@ -79,16 +79,16 @@ export default function ServicioCard({ servicio }) {
       themeColor = "#00C2FF"; // Azul
       break;
     case "desarrollo":
-      themeColor = "#96c93d"; // Verde
+      themeColor = "#00C2FF"; // Verde
       break;
     case "robotica":
-      themeColor = "#000052"; // Azul oscuro
+      themeColor = "#00C2FF"; // Azul oscuro
       break;
     case "renovable":
-      themeColor = "#C5299B"; // Púrpura
+      themeColor = "#00C2FF"; // Púrpura
       break;
     case "formacion":
-      themeColor = "#FFA500"; // Naranja
+      themeColor = "#00C2FF"; // Naranja
       break;
     default:
       themeColor = "#00C2FF";

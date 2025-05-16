@@ -46,8 +46,7 @@ const primeraFila = [
       { icon: Network, label: "Redes domésticas" },
       { icon: Network, label: "Redes industriales" },
     ],
-  },
-  {
+  },  {
     icon: "/desarrollo.png",
     label: "Desarrollo de tecnología",
     categoria: "desarrollo",
@@ -57,6 +56,7 @@ const primeraFila = [
       { icon: LayoutDashboard, label: "Desarrollo de páginas web" },
       { icon: Cpu, label: "Desarrollo y diseño de PCV" },
       { icon: FlaskConical, label: "Análisis de circuitos" },
+      { icon: Package, label: "Impresión 3D" },
     ],
   },
   {
@@ -74,12 +74,12 @@ const primeraFila = [
     categoria: "robotica",
     children: [
       { icon: LayoutDashboard, label: "Estaciones de trabajo" },
-      { icon: Bot, label: "Fines de brazo (ROATS)" },
+      { icon: Bot, label: "Fines de brazo" },
       { icon: FlaskConical, label: "Investigación" },
       { icon: Eye, label: "Sistemas de visión" },
       { icon: Scissors, label: "Sistemas de corte de colada" },
       { icon: Bot, label: "Programación de robots" },
-      { icon: Vibrate, label: "Bowl feeder (mesas vibratorias)" },
+      { icon: Vibrate, label: "Bowl feeder" },
       { icon: LayoutDashboard, label: "Tableros eléctricos" },
       { icon: FlaskConical, label: "Simulaciones" },
     ],
@@ -105,7 +105,7 @@ const segundaFila = [
     label: "Robótica",
     categoria: "robotica",
     children: [
-      { icon: HomeIcon, label: "Domótica (casas)" },
+      { icon: HomeIcon, label: "Domótica" },
       { icon: ShieldCheck, label: "Seguridad" },
       { icon: Package, label: "Máquinas expendedoras" },
       { icon: Bot, label: "Programación de robots" },

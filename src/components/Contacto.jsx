@@ -144,7 +144,7 @@ export default function Contacto() {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden" id="contacto">
       {/* Elementos decorativos de fondo mejorados */}
       <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-[#00C2FF]/5 blur-[100px] -z-10"></div>
       <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-[#000052]/5 blur-[80px] -z-10"></div>
@@ -219,10 +219,10 @@ export default function Contacto() {
                   <div>
                     <h4 className="font-medium text-slate-700">Email</h4>
                     <a
-                      href="mailto:contacto@innovatechmex.com"
+                      href="mailto:ventas@innovatechmex.com"
                       className="text-[#00ADBF] hover:underline"
                     >
-                      contacto@innovatechmex.com
+                      ventas@innovatechmex.com
                     </a>
                   </div>
                 </motion.div>
@@ -261,9 +261,7 @@ export default function Contacto() {
                   <div>
                     <h4 className="font-medium text-slate-700">Ubicación</h4>
                     <p className="text-[#000052]">
-                      Ciudad de México, México
-                      <br />
-                      CP 03100
+                      San Pedro Cholula, Puebla
                     </p>
                   </div>
                 </motion.div>
