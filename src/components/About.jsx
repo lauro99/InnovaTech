@@ -7,7 +7,7 @@ export default function About() {
   const statsData = [
     { value: "2025", label: "Año de fundación", icon: <Rocket className="h-7 w-7 text-[#00C2FF]" /> },
     { value: "15+", label: "Proyectos en desarrollo", icon: <Target className="h-7 w-7 text-[#00C2FF]" /> },
-    { value: "25+", label: "Especialistas", icon: <Users className="h-7 w-7 text-[#00C2FF]" /> },
+    { value: "5+", label: "Especialistas", icon: <Users className="h-7 w-7 text-[#00C2FF]" /> },
     { value: "5+", label: "Tecnologías innovadoras", icon: <CheckCircle className="h-7 w-7 text-[#00C2FF]" /> },
   ];
 

@@ -222,7 +222,7 @@ export default function Contacto() {
                       href="mailto:ventas@innovatechmex.com"
                       className="text-[#00ADBF] hover:underline"
                     >
-                      contacto@innovatechmex.com
+                      ventas@innovatechmex.com
                     </a>
                   </div>
                 </motion.div>
