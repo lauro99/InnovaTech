@@ -1,4 +1,15 @@
 {
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.innovatechmex.com>; rel=canonical"
+        }
+      ]
+    }
+  ],
   "redirects": [
     {
       "source": "/(.*)",
