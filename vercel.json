@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://www.innovatechmex.com/$1",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "innova-tech-beige.vercel.app"
+        }
+      ]
+    }
+  ]
+}

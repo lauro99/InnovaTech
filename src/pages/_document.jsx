@@ -8,7 +8,12 @@ export default function Document() {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         {/* Preconectar a orígenes de recursos */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="canonical" href="https://www.innovatechmex.com/" />
         {/* Metadatos para motores de búsqueda */}
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
