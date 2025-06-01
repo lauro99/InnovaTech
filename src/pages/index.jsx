@@ -5,6 +5,7 @@ import MVV from "../components/MVV";
 import Servicios from "../components/Servicios";
 import ProcesoTrabajo from "../components/ProcesoTrabajo";
 import Contacto from "../components/Contacto";
+import Tecnologias from "../components/Tecnologias";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <About />
       <MVV />
       <Servicios />
+      <Tecnologias />
       <ProcesoTrabajo />
       <Contacto />
     </Layout>
