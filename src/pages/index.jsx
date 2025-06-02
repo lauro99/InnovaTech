@@ -6,6 +6,7 @@ import Servicios from "../components/Servicios";
 import ProcesoTrabajo from "../components/ProcesoTrabajo";
 import Contacto from "../components/Contacto";
 import Tecnologias from "../components/Tecnologias";
+import Aliados from "../components/Aliados";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <Servicios />
       <Tecnologias />
       <ProcesoTrabajo />
+      <Aliados />
       <Contacto />
     </Layout>
   );
