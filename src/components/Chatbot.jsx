@@ -1,10 +1,27 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
+const ChatButton = ({ text, onClick }) => (
+  <button
+    onClick={onClick}
+    className="mb-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:opacity-90 transition-opacity text-sm w-full text-left"
+  >
+    {text}
+  </button>
+);
+
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { text: "¡Hola! Soy el asistente virtual de InnovaTech. ¿En qué puedo ayudarte?", isBot: true }
+  const [messages, setMessages] = useState([    { 
+      text: "¡Hola! Soy el asistente virtual de InnovaTech. ¿En qué puedo ayudarte?",
+      isBot: true,
+      buttons: [
+        "Servicios disponibles",
+        "Información de la empresa",
+        "Precios y presupuestos",
+        "Información de contacto"
+      ]
+    }
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const messagesEndRef = useRef(null);
@@ -19,27 +36,77 @@ const Chatbot = () => {
     const lowerMessage = message.toLowerCase();
     
     // Verificar saludo
-    if (lowerMessage.includes('hola') || lowerMessage.includes('buenos días') || lowerMessage.includes('buenas tardes') || lowerMessage.includes('buenas noches')) {
-      return "¡Hola! 👋 Soy el asistente virtual de InnovaTech. ¿Cómo puedo ayudarte hoy? Puedes preguntarme sobre nuestros servicios, información de contacto o cualquier duda específica.";
+    if (lowerMessage.includes('hola') || lowerMessage.includes('buenos días') || lowerMessage.includes('buenas tardes') || lowerMessage.includes('buenas noches')) {      return {
+        text: "¡Hola! 👋 Soy el asistente virtual de InnovaTech. ¿Cómo puedo ayudarte hoy? Puedes preguntarme sobre nuestros servicios, información de contacto o cualquier duda específica.",
+        buttons: [
+          "Servicios disponibles",
+          "Información de la empresa",
+          "Precios y presupuestos",
+          "Información de contacto"
+        ]
+      };
     }
-    
-    // Verificar servicios generales
+
+    // Verificar contacto específico
+    if (lowerMessage.includes('enviar email') || lowerMessage.includes('correo')) {
+      return {
+        text: `📧 Puedes enviarnos un correo a ventas@innovatechmex.com y te responderemos lo antes posible.`,
+        buttons: [
+          "Ver servicios",
+          "Agendar llamada",
+          "Volver al menú principal"
+        ]
+      };
+    }
+
+    if (lowerMessage.includes('llamar') || lowerMessage.includes('teléfono') || lowerMessage.includes('telefono') || lowerMessage.includes('agendar')) {
+      return {
+        text: `📞 Puedes llamarnos al +52 221 429 0985 para recibir atención inmediata.
+
+Nuestro equipo de ventas está disponible para atenderte y resolver todas tus dudas.`,
+        buttons: [
+          "Ver servicios",
+          "Enviar email",
+          "Volver al menú principal"
+        ]
+      };
+    }
+      // Verificar servicios generales
     if (lowerMessage.includes('servicio') || lowerMessage.includes('que hacen') || lowerMessage.includes('qué ofrecen')) {
-      return `Ofrecemos los siguientes servicios principales:
+      return {
+        text: `Ofrecemos los siguientes servicios principales:
 
-✨ Desarrollo de Software
+💻 Desarrollo de Software
+🌐 Desarrollo Web y Móvil
 🤖 Robótica y Automatización
+⚡ Sistemas Eléctricos
 💡 Energías Renovables
-🌐 Redes y Conectividad
+🔌 Redes y Conectividad
+📊 Sistemas CAD/CAM
 🔧 Mantenimiento y Soporte
-📱 Desarrollo Web y Móvil
+🌱 Biotecnología
+🏭 Automatización Industrial
 
-¿Te gustaría saber más sobre algún servicio en particular?`;
+¿Te gustaría saber más sobre algún servicio en particular?`,
+        buttons: [
+          "Desarrollo de Software",
+          "Desarrollo Web y Móvil",
+          "Robótica y Automatización",
+          "Sistemas Eléctricos",
+          "Energías Renovables",
+          "Redes y Conectividad",
+          "Sistemas CAD/CAM",
+          "Mantenimiento y Soporte",
+          "Biotecnología",
+          "Automatización Industrial",
+          "Volver al menú principal"
+        ]
+      };
     }
 
     // Verificar servicios específicos
-    if (lowerMessage.includes('desarrollo') || lowerMessage.includes('software') || lowerMessage.includes('aplicaciones')) {
-      return `En desarrollo de software ofrecemos:
+    if (lowerMessage.includes('desarrollo') || lowerMessage.includes('software') || lowerMessage.includes('aplicaciones')) {      return {
+        text: `En desarrollo de software ofrecemos:
 
 💻 Aplicaciones web personalizadas
 📱 Apps móviles iOS y Android
@@ -47,81 +114,230 @@ const Chatbot = () => {
 🛠️ Soluciones de comercio electrónico
 ⚡ Optimización de rendimiento
 
-Nuestro equipo utiliza las últimas tecnologías para crear soluciones robustas y escalables.`;
+Nuestro equipo utiliza las últimas tecnologías para crear soluciones robustas y escalables.`,
+        buttons: [
+          "Agendar consulta gratuita",
+          "Contactar al equipo",
+          "Volver a servicios",
+          "Volver al menú principal"
+        ]
+      };
+    }
+
+    if (lowerMessage.includes('desarrollo web') || lowerMessage.includes('móvil')) {
+      return {
+        text: `En desarrollo web y móvil ofrecemos:
+
+💻 Sitios web responsivos
+📱 Aplicaciones móviles iOS y Android
+🛒 Tiendas en línea
+🖥️ Aplicaciones web progresivas (PWA)
+⚡ Optimización de rendimiento
+🔒 Seguridad web
+
+Utilizamos las últimas tecnologías para crear experiencias digitales excepcionales.`,        buttons: [
+          "Agendar consulta gratuita",
+          "Contactar al equipo",
+          "Volver a servicios",
+          "Volver al menú principal"
+        ]
+      };
     }
 
     if (lowerMessage.includes('robótica') || lowerMessage.includes('robotica') || lowerMessage.includes('automatización') || lowerMessage.includes('automatizacion')) {
-      return `Nuestros servicios de robótica y automatización incluyen:
+      return {
+        text: `Nuestros servicios de robótica y automatización incluyen:
 
 🤖 Diseño y fabricación de robots industriales
 ⚙️ Automatización de procesos productivos
 📊 Sistemas de control y monitoreo
 🔧 Mantenimiento predictivo
-🎯 Optimización de líneas de producción`;
+🎯 Optimización de líneas de producción`,        buttons: [
+          "Agendar consulta gratuita",
+          "Contactar especialista",
+          "Volver a servicios",
+          "Volver al menú principal"
+        ]
+      };
     }
 
     if (lowerMessage.includes('energía') || lowerMessage.includes('energia') || lowerMessage.includes('renovable')) {
-      return `En energías renovables ofrecemos:
+      return {
+        text: `En energías renovables ofrecemos:
 
 ☀️ Instalación de paneles solares
 🌪️ Sistemas de energía eólica
 ⚡ Soluciones de almacenamiento de energía
 📊 Auditorías energéticas
-♻️ Consultoría en sostenibilidad`;
+♻️ Consultoría en sostenibilidad`,        buttons: [
+          "Consultar precios",
+          "Solicitar auditoría",
+          "Volver a servicios",
+          "Volver al menú principal"
+        ]
+      };
+    }
+
+    if (lowerMessage.includes('cad') || lowerMessage.includes('cam')) {
+      return {
+        text: `Nuestros servicios de CAD/CAM incluyen:
+
+📐 Diseño asistido por computadora
+🔧 Manufactura asistida por computadora
+🎯 Modelado 3D y prototipado
+📊 Simulación y análisis
+🏭 Optimización de procesos de fabricación
+📋 Documentación técnica`,
+        buttons: [
+          "Agendar consulta gratuita",
+          "Contactar especialista",
+          "Volver a servicios",
+          "Volver al menú principal"
+        ]
+      };
+    }
+
+    if (lowerMessage.includes('biotecnología') || lowerMessage.includes('biotecnologia')) {
+      return {
+        text: `En biotecnología ofrecemos:
+
+🧬 Sistemas de control para bioprocesos
+🔬 Automatización de laboratorios
+📊 Análisis de datos biológicos
+🌱 Control de cultivos
+⚡ Optimización de procesos biotecnológicos
+🔧 Mantenimiento de equipos especializados`,
+        buttons: [
+          "Agendar consulta gratuita",
+          "Contactar especialista",
+          "Volver a servicios",
+          "Volver al menú principal"
+        ]
+      };
+    }
+
+    if (lowerMessage.includes('sistemas eléctricos') || lowerMessage.includes('electricos')) {
+      return {
+        text: `En sistemas eléctricos ofrecemos:
+
+⚡ Instalaciones eléctricas industriales
+🔌 Sistemas de distribución eléctrica
+📊 Auditorías energéticas
+🔧 Mantenimiento preventivo
+🛡️ Protección y seguridad eléctrica
+📱 Sistemas de control eléctrico`,
+        buttons: [
+          "Agendar consulta gratuita",
+          "Contactar especialista",
+          "Volver a servicios",
+          "Volver al menú principal"
+        ]
+      };
+    }
+
+    if (lowerMessage.includes('automatización industrial') || lowerMessage.includes('automatizacion industrial')) {
+      return {
+        text: `En automatización industrial ofrecemos:
+
+🏭 Automatización de líneas de producción
+🤖 Integración de sistemas robóticos
+📊 Sistemas SCADA
+🔧 Control de procesos industriales
+⚡ Eficiencia energética industrial
+🛠️ Mantenimiento predictivo`,
+        buttons: [
+          "Agendar consulta gratuita",
+          "Contactar especialista",
+          "Volver a servicios",
+          "Volver al menú principal"
+        ]
+      };
     }
 
     // Verificar preguntas sobre la empresa
     if (lowerMessage.includes('empresa') || lowerMessage.includes('compañía') || lowerMessage.includes('innovatech')) {
-      return `InnovaTech es una empresa líder en soluciones tecnológicas innovadoras. Algunos datos importantes:
+      return {
+        text: `InnovaTech es una empresa líder en soluciones tecnológicas innovadoras. Algunos datos importantes:
 
 🎯 Misión: Transformar ideas en soluciones tecnológicas innovadoras
 👥 Más de 100 profesionales especializados
 🌟 10+ años de experiencia en el mercado
 🏆 Certificaciones internacionales
-🤝 Alianzas estratégicas con líderes tecnológicos`;
+🤝 Alianzas estratégicas con líderes tecnológicos`,
+        buttons: [
+          "Ver servicios",
+          "Contactar con ventas",
+          "Solicitar más información",
+          "Volver al menú principal"
+        ]
+      };
     }
 
     // Verificar preguntas sobre precios
     if (lowerMessage.includes('precio') || lowerMessage.includes('costo') || lowerMessage.includes('tarifa') || lowerMessage.includes('presupuesto')) {
-      return `Los precios varían según las necesidades específicas de cada proyecto. Para obtener un presupuesto personalizado:
+      return {
+        text: `Los precios varían según las necesidades específicas de cada proyecto. Para obtener un presupuesto personalizado:
 
-1. Agenda una consulta gratuita
+1. Agenda una consulta gratuita llamando al +52 221 429 0985
 2. Evaluaremos tus necesidades
 3. Recibirás una propuesta detallada
 
-¿Te gustaría agendar una consulta con nuestro equipo?`;
+¿Te gustaría agendar una consulta con nuestro equipo?`,
+        buttons: [
+          "Llamar ahora",
+          "Enviar email",
+          "Ver servicios disponibles",
+          "Volver al menú principal"
+        ]
+      };
     }
     
-    // Verificar contacto
-    if (lowerMessage.includes('contacto') || lowerMessage.includes('contactar') || lowerMessage.includes('comunicar') || lowerMessage.includes('ubicación')) {
-      return `Puedes contactarnos de las siguientes maneras:
+    // Verificar contacto general
+    if (lowerMessage.includes('contacto') || lowerMessage.includes('contactar') || lowerMessage.includes('comunicar') || lowerMessage.includes('ubicación')) {      return {
+        text: `Puedes contactarnos de las siguientes maneras:
 
-📧 Email: info@innovatech.com
-📞 Teléfono: (555) 123-4567
-🏢 Dirección: Av. Tecnología 123, Ciudad Innovación
+📧 Email: ventas@innovatechmex.com
+📞 Teléfono: +52 221 429 0985
+🏢 Dirección: San Pedro Cholula, Puebla
 
-También puedes usar nuestro formulario de contacto en la página web. ¿Te gustaría que te ayude con algo más?`;
+También puedes usar nuestro formulario de contacto en la página web.`,
+        buttons: [
+          "Llamar ahora",
+          "Enviar email",
+          "Ver ubicación",
+          "Ver servicios",
+          "Volver al menú principal"
+        ]
+      };
     }
-
-    // Verificar tiempo de desarrollo
-    if (lowerMessage.includes('tiempo') || lowerMessage.includes('duración') || lowerMessage.includes('plazo')) {
-      return `Los tiempos de desarrollo varían según el proyecto:
-
-⚡ Proyectos pequeños: 2-4 semanas
-🔄 Proyectos medianos: 1-3 meses
-🏗️ Proyectos grandes: 3-6 meses o más
-
-Cada proyecto es único y recibirá un cronograma detallado después de la evaluación inicial. ¿Te gustaría conocer más detalles sobre algún tipo de proyecto en particular?`;
+    
+    // Verificar volver al menú
+    if (lowerMessage.includes('volver') || lowerMessage.includes('menu principal')) {
+      return {
+        text: "¿En qué más puedo ayudarte?",
+        buttons: [
+          "Servicios disponibles",
+          "Información de la empresa",
+          "Precios y presupuestos",
+          "Información de contacto"
+        ]
+      };
     }
     
     // Respuesta por defecto
-    return "No estoy seguro de tu pregunta específica, pero puedo ayudarte con información sobre:\n\n" +
+    return {      text: "No estoy seguro de tu pregunta específica, pero puedo ayudarte con información sobre:\n\n" +
            "📱 Nuestros servicios y soluciones\n" +
            "💼 Información sobre la empresa\n" +
            "💰 Precios y presupuestos\n" +
-           "⏱️ Tiempos de desarrollo\n" +
            "📞 Información de contacto\n\n" +
-           "¿Sobre cuál de estos temas te gustaría saber más?";
+           "¿Sobre cuál de estos temas te gustaría saber más?",
+      buttons: [
+        "Servicios disponibles",
+        "Información de la empresa",
+        "Precios y presupuestos",
+        "Información de contacto"
+      ]
+    };
   };
 
   const handleSendMessage = async (e) => {
@@ -135,10 +351,27 @@ Cada proyecto es único y recibirá un cronograma detallado después de la evalu
 
     // Get and add bot response
     setTimeout(() => {
-      const botResponse = getBotResponse(inputMessage);
+      const response = getBotResponse(inputMessage);
       setMessages([...newMessages, {
-        text: botResponse,
-        isBot: true
+        text: response.text,
+        isBot: true,
+        buttons: response.buttons
+      }]);
+    }, 800);
+  };
+
+  const handleButtonClick = (buttonText) => {
+    // Add user message
+    const newMessages = [...messages, { text: buttonText, isBot: false }];
+    setMessages(newMessages);
+
+    // Get and add bot response
+    setTimeout(() => {
+      const response = getBotResponse(buttonText);
+      setMessages([...newMessages, {
+        text: response.text,
+        isBot: true,
+        buttons: response.buttons
       }]);
     }, 800);
   };
@@ -199,14 +432,27 @@ Cada proyecto es único y recibirá un cronograma detallado después de la evalu
               key={index}
               className={`flex ${message.isBot ? 'justify-start' : 'justify-end'} mb-4`}
             >
-              <div
-                className={`max-w-[80%] p-3 rounded-lg ${
-                  message.isBot
-                    ? 'bg-gray-100 text-gray-800'
-                    : 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
-                }`}
-              >
-                {message.text}
+              <div className="flex flex-col max-w-[80%]">
+                <div
+                  className={`p-3 rounded-lg ${
+                    message.isBot
+                      ? 'bg-gray-100 text-gray-800'
+                      : 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
+                  }`}
+                >
+                  {message.text}
+                </div>
+                {message.isBot && message.buttons && (
+                  <div className="mt-2">
+                    {message.buttons.map((button, buttonIndex) => (
+                      <ChatButton
+                        key={buttonIndex}
+                        text={button}
+                        onClick={() => handleButtonClick(button)}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           ))}
