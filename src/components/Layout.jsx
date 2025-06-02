@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Head from "next/head";
 import Footer from "./Footer";
+import Chatbot from "./Chatbot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,6 +54,7 @@ export default function Layout({ children, title, description, keywords, image }
           {children}
         </main>
         <Footer />
+        <Chatbot />
       </div>
     </>
   );
