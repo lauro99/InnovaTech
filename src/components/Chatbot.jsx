@@ -251,8 +251,7 @@ Capacitación profesional para potenciar tus habilidades.`,
         text: `InnovaTech es una empresa líder en soluciones tecnológicas innovadoras. Algunos datos importantes:
 
 🎯 Misión: Transformar ideas en soluciones tecnológicas innovadoras
-👥 Más de 100 profesionales especializados
-🌟 10+ años de experiencia en el mercado
+👥 Más de 15 profesionales especializados
 🏆 Certificaciones internacionales
 🤝 Alianzas estratégicas con líderes tecnológicos`,
         buttons: [
