@@ -76,45 +76,41 @@ Nuestro equipo de ventas está disponible para atenderte y resolver todas tus du
       return {
         text: `Ofrecemos los siguientes servicios principales:
 
-💻 Desarrollo de Software
-🌐 Desarrollo Web y Móvil
-🤖 Robótica y Automatización
-⚡ Sistemas Eléctricos
-💡 Energías Renovables
-🔌 Redes y Conectividad
-📊 Sistemas CAD/CAM
-🔧 Mantenimiento y Soporte
-🌱 Biotecnología
-🏭 Automatización Industrial
+⚡ Ingeniería Eléctrica
+💻 Desarrollo de Tecnología
+🔬 Biomédica
+🤖 Automatización
+📐 Diseño CAD/CAE
+🏠 Robótica
+🌱 Energía Renovable
+📚 Certificaciones
 
 ¿Te gustaría saber más sobre algún servicio en particular?`,
         buttons: [
-          "Desarrollo de Software",
-          "Desarrollo Web y Móvil",
-          "Robótica y Automatización",
-          "Sistemas Eléctricos",
-          "Energías Renovables",
-          "Redes y Conectividad",
-          "Sistemas CAD/CAM",
-          "Mantenimiento y Soporte",
-          "Biotecnología",
-          "Automatización Industrial",
+          "Ingeniería Eléctrica",
+          "Desarrollo de Tecnología",
+          "Biomédica",
+          "Automatización",
+          "Diseño CAD/CAE",
+          "Robótica",
+          "Energía Renovable",
+          "Certificaciones",
           "Volver al menú principal"
         ]
       };
     }
 
     // Verificar servicios específicos
-    if (lowerMessage.includes('desarrollo') || lowerMessage.includes('software') || lowerMessage.includes('aplicaciones')) {      return {
-        text: `En desarrollo de software ofrecemos:
+    if (lowerMessage.includes('eléctrica') || lowerMessage.includes('electrica')) {
+      return {
+        text: `En Ingeniería Eléctrica ofrecemos:
 
-💻 Aplicaciones web personalizadas
-📱 Apps móviles iOS y Android
-🔄 Sistemas de gestión empresarial
-🛠️ Soluciones de comercio electrónico
-⚡ Optimización de rendimiento
+🏠 Redes domésticas
+🏭 Redes industriales
+🔌 Diseño de circuitos
+⚡ Análisis de circuitos
 
-Nuestro equipo utiliza las últimas tecnologías para crear soluciones robustas y escalables.`,
+Nuestro equipo está altamente capacitado para brindar soluciones eléctricas confiables y eficientes.`,
         buttons: [
           "Agendar consulta gratuita",
           "Contactar al equipo",
@@ -124,18 +120,17 @@ Nuestro equipo utiliza las últimas tecnologías para crear soluciones robustas 
       };
     }
 
-    if (lowerMessage.includes('desarrollo web') || lowerMessage.includes('móvil')) {
+    if (lowerMessage.includes('desarrollo') || lowerMessage.includes('tecnología') || lowerMessage.includes('tecnologia')) {
       return {
-        text: `En desarrollo web y móvil ofrecemos:
+        text: `En Desarrollo de Tecnología ofrecemos:
 
-💻 Sitios web responsivos
-📱 Aplicaciones móviles iOS y Android
-🛒 Tiendas en línea
-🖥️ Aplicaciones web progresivas (PWA)
-⚡ Optimización de rendimiento
-🔒 Seguridad web
+💻 Desarrollo de aplicaciones
+🌐 Desarrollo de páginas web
+📱 Desarrollo y diseño de PCV
+🖨️ Impresión 3D
 
-Utilizamos las últimas tecnologías para crear experiencias digitales excepcionales.`,        buttons: [
+Utilizamos las últimas tecnologías para crear soluciones innovadoras y personalizadas.`,
+        buttons: [
           "Agendar consulta gratuita",
           "Contactar al equipo",
           "Volver a servicios",
@@ -144,15 +139,15 @@ Utilizamos las últimas tecnologías para crear experiencias digitales excepcion
       };
     }
 
-    if (lowerMessage.includes('robótica') || lowerMessage.includes('robotica') || lowerMessage.includes('automatización') || lowerMessage.includes('automatizacion')) {
+    if (lowerMessage.includes('biomédica') || lowerMessage.includes('biomedica')) {
       return {
-        text: `Nuestros servicios de robótica y automatización incluyen:
+        text: `En el área Biomédica ofrecemos:
 
-🤖 Diseño y fabricación de robots industriales
-⚙️ Automatización de procesos productivos
-📊 Sistemas de control y monitoreo
-🔧 Mantenimiento predictivo
-🎯 Optimización de líneas de producción`,        buttons: [
+🦾 Diseño de prótesis
+🔧 Mantenimiento de máquinas
+
+Trabajamos con tecnología de punta para desarrollar soluciones médicas innovadoras.`,
+        buttons: [
           "Agendar consulta gratuita",
           "Contactar especialista",
           "Volver a servicios",
@@ -161,15 +156,80 @@ Utilizamos las últimas tecnologías para crear experiencias digitales excepcion
       };
     }
 
-    if (lowerMessage.includes('energía') || lowerMessage.includes('energia') || lowerMessage.includes('renovable')) {
+    if (lowerMessage.includes('automatización') || lowerMessage.includes('automatizacion')) {
       return {
-        text: `En energías renovables ofrecemos:
+        text: `En Automatización ofrecemos:
 
-☀️ Instalación de paneles solares
-🌪️ Sistemas de energía eólica
-⚡ Soluciones de almacenamiento de energía
-📊 Auditorías energéticas
-♻️ Consultoría en sostenibilidad`,        buttons: [
+🏭 Estaciones de trabajo
+🦾 Fines de brazo
+🔬 Investigación
+👁️ Sistemas de visión
+⚙️ Sistemas de corte de colada
+🤖 Programación de robots
+🔄 Bowl feeder
+⚡ Tableros eléctricos
+💻 Simulaciones`,
+        buttons: [
+          "Agendar consulta gratuita",
+          "Contactar especialista",
+          "Volver a servicios",
+          "Volver al menú principal"
+        ]
+      };
+    }
+
+    if (lowerMessage.includes('cad') || lowerMessage.includes('cae')) {
+      return {
+        text: `En Diseño CAD/CAE ofrecemos:
+
+🔄 Rediseño de piezas
+📋 Actualización de planos
+⚙️ Diseño de moldes
+🎯 Diseño de productos
+📊 Análisis de punto finito
+💨 CFD (Dinámica de fluidos por computadora)`,
+        buttons: [
+          "Agendar consulta gratuita",
+          "Contactar especialista",
+          "Volver a servicios",
+          "Volver al menú principal"
+        ]
+      };
+    }
+
+    if (lowerMessage.includes('robótica') || lowerMessage.includes('robotica')) {
+      return {
+        text: `En Robótica ofrecemos:
+
+🏠 Domótica
+🔒 Seguridad
+🤖 Máquinas expendedoras
+💻 Programación de robots
+📦 Suministros
+📋 Propuestas
+
+Soluciones robóticas avanzadas para automatizar y mejorar procesos.`,
+        buttons: [
+          "Agendar consulta gratuita",
+          "Contactar especialista",
+          "Volver a servicios",
+          "Volver al menú principal"
+        ]
+      };
+    }
+
+    if (lowerMessage.includes('renovable') || lowerMessage.includes('energía')) {
+      return {
+        text: `En Energía Renovable ofrecemos:
+
+💧 Osmosis Inversa
+🔋 Electroimanes
+🚰 Filtros purificadores
+☀️ Sistemas fotovoltaicos
+🌪️ Sistemas eólicos
+
+Soluciones sostenibles para un futuro más verde.`,
+        buttons: [
           "Consultar precios",
           "Solicitar auditoría",
           "Volver a servicios",
@@ -178,76 +238,18 @@ Utilizamos las últimas tecnologías para crear experiencias digitales excepcion
       };
     }
 
-    if (lowerMessage.includes('cad') || lowerMessage.includes('cam')) {
+    if (lowerMessage.includes('certificaciones') || lowerMessage.includes('cursos')) {
       return {
-        text: `Nuestros servicios de CAD/CAM incluyen:
+        text: `Ofrecemos las siguientes certificaciones:
 
-📐 Diseño asistido por computadora
-🔧 Manufactura asistida por computadora
-🎯 Modelado 3D y prototipado
-📊 Simulación y análisis
-🏭 Optimización de procesos de fabricación
-📋 Documentación técnica`,
+💻 Cursos en línea Solidworks
+👥 Cursos presenciales Solidworks
+📜 Certificaciones Solidworks
+
+Capacitación profesional para potenciar tus habilidades.`,
         buttons: [
           "Agendar consulta gratuita",
-          "Contactar especialista",
-          "Volver a servicios",
-          "Volver al menú principal"
-        ]
-      };
-    }
-
-    if (lowerMessage.includes('biotecnología') || lowerMessage.includes('biotecnologia')) {
-      return {
-        text: `En biotecnología ofrecemos:
-
-🧬 Sistemas de control para bioprocesos
-🔬 Automatización de laboratorios
-📊 Análisis de datos biológicos
-🌱 Control de cultivos
-⚡ Optimización de procesos biotecnológicos
-🔧 Mantenimiento de equipos especializados`,
-        buttons: [
-          "Agendar consulta gratuita",
-          "Contactar especialista",
-          "Volver a servicios",
-          "Volver al menú principal"
-        ]
-      };
-    }
-
-    if (lowerMessage.includes('sistemas eléctricos') || lowerMessage.includes('electricos')) {
-      return {
-        text: `En sistemas eléctricos ofrecemos:
-
-⚡ Instalaciones eléctricas industriales
-🔌 Sistemas de distribución eléctrica
-📊 Auditorías energéticas
-🔧 Mantenimiento preventivo
-🛡️ Protección y seguridad eléctrica
-📱 Sistemas de control eléctrico`,
-        buttons: [
-          "Agendar consulta gratuita",
-          "Contactar especialista",
-          "Volver a servicios",
-          "Volver al menú principal"
-        ]
-      };
-    }
-
-    if (lowerMessage.includes('automatización industrial') || lowerMessage.includes('automatizacion industrial')) {
-      return {
-        text: `En automatización industrial ofrecemos:
-
-🏭 Automatización de líneas de producción
-🤖 Integración de sistemas robóticos
-📊 Sistemas SCADA
-🔧 Control de procesos industriales
-⚡ Eficiencia energética industrial
-🛠️ Mantenimiento predictivo`,
-        buttons: [
-          "Agendar consulta gratuita",
-          "Contactar especialista",
+          "Más información",
           "Volver a servicios",
           "Volver al menú principal"
         ]
