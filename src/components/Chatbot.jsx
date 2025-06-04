@@ -206,9 +206,7 @@ Soluciones robóticas avanzadas para automatizar y mejorar procesos.`,
           "Volver al menú principal"
         ]
       };
-    }
-
-    if (lowerMessage.includes('renovable') || lowerMessage.includes('energía')) {      return {
+    }    if (lowerMessage.includes('renovable') || lowerMessage.includes('energía') || lowerMessage.includes('eolica')) {      return {
         text: `En Energía Renovable ofrecemos:
 
 💧 Osmosis Inversa
@@ -356,8 +354,8 @@ También puedes usar nuestro formulario de contacto en la página web.`,
       lowerMessage.includes('cae') ||
       lowerMessage.includes('robótica') ||
       lowerMessage.includes('robotica') ||
-      lowerMessage.includes('renovable') ||
-      lowerMessage.includes('energía') ||
+      lowerMessage.includes('renovable') ||      lowerMessage.includes('energía') ||
+      lowerMessage.includes('eolica') ||
       lowerMessage.includes('certificaciones');
 
     // Si es el primer mensaje y no es una pregunta específica, mostrar saludo
@@ -411,8 +409,8 @@ También puedes usar nuestro formulario de contacto en la página web.`,
       lowerText.includes('cae') ||
       lowerText.includes('robótica') ||
       lowerText.includes('robotica') ||
-      lowerText.includes('renovable') ||
-      lowerText.includes('energía') ||
+      lowerText.includes('renovable') ||      lowerText.includes('energía') ||
+      lowerText.includes('eolica') ||
       lowerText.includes('certificaciones');
 
     // Si no hay mensajes previos y no es una selección específica, mostrar saludo
