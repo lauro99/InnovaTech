@@ -12,17 +12,7 @@ const ChatButton = ({ text, onClick }) => (
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([    { 
-      text: "¡Hola! Soy el asistente virtual de InnovaTech. ¿En qué puedo ayudarte?",
-      isBot: true,
-      buttons: [
-        "Servicios disponibles",
-        "Información de la empresa",
-        "Precios y presupuestos",
-        "Información de contacto"
-      ]
-    }
-  ]);
+  const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const messagesEndRef = useRef(null);
 
@@ -218,8 +208,7 @@ Soluciones robóticas avanzadas para automatizar y mejorar procesos.`,
       };
     }
 
-    if (lowerMessage.includes('renovable') || lowerMessage.includes('energía')) {
-      return {
+    if (lowerMessage.includes('renovable') || lowerMessage.includes('energía')) {      return {
         text: `En Energía Renovable ofrecemos:
 
 💧 Osmosis Inversa
@@ -231,7 +220,7 @@ Soluciones robóticas avanzadas para automatizar y mejorar procesos.`,
 Soluciones sostenibles para un futuro más verde.`,
         buttons: [
           "Consultar precios",
-          "Solicitar auditoría",
+          "Contactar especialista",
           "Volver a servicios",
           "Volver al menú principal"
         ]
@@ -348,6 +337,47 @@ También puedes usar nuestro formulario de contacto en la página web.`,
 
     // Add user message
     const newMessages = [...messages, { text: inputMessage, isBot: false }];
+    
+    // Verificar si es una pregunta específica
+    const lowerMessage = inputMessage.toLowerCase();
+    const isSpecificQuery = 
+      lowerMessage.includes('servicio') ||
+      lowerMessage.includes('precio') ||
+      lowerMessage.includes('contacto') ||
+      lowerMessage.includes('empresa') ||
+      lowerMessage.includes('eléctrica') ||
+      lowerMessage.includes('electrica') ||
+      lowerMessage.includes('desarrollo') ||
+      lowerMessage.includes('tecnología') ||
+      lowerMessage.includes('biomédica') ||
+      lowerMessage.includes('biomedica') ||
+      lowerMessage.includes('automatización') ||
+      lowerMessage.includes('automatizacion') ||
+      lowerMessage.includes('cad') ||
+      lowerMessage.includes('cae') ||
+      lowerMessage.includes('robótica') ||
+      lowerMessage.includes('robotica') ||
+      lowerMessage.includes('renovable') ||
+      lowerMessage.includes('energía') ||
+      lowerMessage.includes('certificaciones');
+
+    // Si es el primer mensaje y no es una pregunta específica, mostrar saludo
+    if (messages.length === 0 && !isSpecificQuery) {
+      newMessages.push({
+        text: "¡Hola! Soy el asistente virtual de InnovaTech. ¿En qué puedo ayudarte?",
+        isBot: true,
+        buttons: [
+          "Servicios disponibles",
+          "Información de la empresa",
+          "Precios y presupuestos",
+          "Información de contacto"
+        ]
+      });
+      setMessages(newMessages);
+      setInputMessage('');
+      return;
+    }
+
     setMessages(newMessages);
     setInputMessage('');
 
@@ -363,6 +393,58 @@ También puedes usar nuestro formulario de contacto en la página web.`,
   };
 
   const handleButtonClick = (buttonText) => {
+    // Verificar si es una selección específica
+    const lowerText = buttonText.toLowerCase();
+    const isSpecificSelection = 
+      lowerText.includes('servicio') ||
+      lowerText.includes('precio') ||
+      lowerText.includes('contacto') ||
+      lowerText.includes('empresa') ||
+      lowerText.includes('eléctrica') ||
+      lowerText.includes('electrica') ||
+      lowerText.includes('desarrollo') ||
+      lowerText.includes('tecnología') ||
+      lowerText.includes('biomédica') ||
+      lowerText.includes('biomedica') ||
+      lowerText.includes('automatización') ||
+      lowerText.includes('automatizacion') ||
+      lowerText.includes('cad') ||
+      lowerText.includes('cae') ||
+      lowerText.includes('robótica') ||
+      lowerText.includes('robotica') ||
+      lowerText.includes('renovable') ||
+      lowerText.includes('energía') ||
+      lowerText.includes('certificaciones');
+
+    // Si no hay mensajes previos y no es una selección específica, mostrar saludo
+    if (messages.length === 0 && !isSpecificSelection) {
+      const initialMessages = [
+        {
+          text: "¡Hola! Soy el asistente virtual de InnovaTech. ¿En qué puedo ayudarte?",
+          isBot: true,
+          buttons: [
+            "Servicios disponibles",
+            "Información de la empresa",
+            "Precios y presupuestos",
+            "Información de contacto"
+          ]
+        },
+        { text: buttonText, isBot: false }
+      ];
+      setMessages(initialMessages);
+
+      // Get and add bot response
+      setTimeout(() => {
+        const response = getBotResponse(buttonText);
+        setMessages([...initialMessages, {
+          text: response.text,
+          isBot: true,
+          buttons: response.buttons
+        }]);
+      }, 800);
+      return;
+    }
+
     // Add user message
     const newMessages = [...messages, { text: buttonText, isBot: false }];
     setMessages(newMessages);
