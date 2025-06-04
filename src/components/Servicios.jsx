@@ -45,6 +45,9 @@ const primeraFila = [
     children: [
       { icon: Network, label: "Redes domésticas" },
       { icon: Network, label: "Redes industriales" },
+      { icon: Network, label: "diseño de circuitos" },
+      { icon: Network, label: "Analisis de circuitos" },
+
     ],
   },  {
     icon: "/desarrollo.png",

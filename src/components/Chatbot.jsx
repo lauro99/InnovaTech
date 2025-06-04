@@ -29,8 +29,8 @@ const Chatbot = () => {
     if (lowerMessage.includes('hola') || lowerMessage.includes('buenos días') || lowerMessage.includes('buenas tardes') || lowerMessage.includes('buenas noches')) {      return {
         text: "¡Hola! 👋 Soy el asistente virtual de InnovaTech. ¿Cómo puedo ayudarte hoy? Puedes preguntarme sobre nuestros servicios, información de contacto o cualquier duda específica.",
         buttons: [
-          "Servicios disponibles",
           "Información de la empresa",
+          "Servicios disponibles",
           "Precios y presupuestos",
           "Información de contacto"
         ]
@@ -67,13 +67,13 @@ Nuestro equipo de ventas está disponible para atenderte y resolver todas tus du
         text: `Ofrecemos los siguientes servicios principales:
 
 ⚡ Ingeniería Eléctrica
-💻 Desarrollo de Tecnología
+🖥️ Desarrollo de Tecnología
 🔬 Biomédica
-🤖 Automatización
-📐 Diseño CAD/CAE
-🏠 Robótica
+🦾 Automatización
+📏 Diseño CAD/CAE
+🤖 Robótica
 🌱 Energía Renovable
-📚 Certificaciones
+🎓 Certificaciones
 
 ¿Te gustaría saber más sobre algún servicio en particular?`,
         buttons: [
@@ -97,8 +97,8 @@ Nuestro equipo de ventas está disponible para atenderte y resolver todas tus du
 
 🏠 Redes domésticas
 🏭 Redes industriales
-🔌 Diseño de circuitos
-⚡ Análisis de circuitos
+⚡ Diseño de circuitos
+📊 Análisis de circuitos
 
 Nuestro equipo está altamente capacitado para brindar soluciones eléctricas confiables y eficientes.`,
         buttons: [
@@ -108,16 +108,17 @@ Nuestro equipo está altamente capacitado para brindar soluciones eléctricas co
           "Volver al menú principal"
         ]
       };
-    }
-
-    if (lowerMessage.includes('desarrollo') || lowerMessage.includes('tecnología') || lowerMessage.includes('tecnologia')) {
+    }    if (lowerMessage.includes('desarrollo') || lowerMessage.includes('tecnología') || lowerMessage.includes('tecnologia')) {
       return {
         text: `En Desarrollo de Tecnología ofrecemos:
 
+⚡ Diseño de circuitos
 💻 Desarrollo de aplicaciones
 🌐 Desarrollo de páginas web
-📱 Desarrollo y diseño de PCV
+🔧 Desarrollo y diseño de PCV
+📊 Análisis de circuitos
 🖨️ Impresión 3D
+
 
 Utilizamos las últimas tecnologías para crear soluciones innovadoras y personalizadas.`,
         buttons: [
@@ -185,9 +186,7 @@ Trabajamos con tecnología de punta para desarrollar soluciones médicas innovad
           "Volver al menú principal"
         ]
       };
-    }
-
-    if (lowerMessage.includes('robótica') || lowerMessage.includes('robotica')) {
+    }    if (lowerMessage.includes('robótica') || lowerMessage.includes('robotica') || lowerMessage.includes('robot') || lowerMessage.includes('robots')) {
       return {
         text: `En Robótica ofrecemos:
 
@@ -311,14 +310,13 @@ También puedes usar nuestro formulario de contacto en la página web.`,
         ]
       };
     }
-    
-    // Respuesta por defecto
-    return {      text: "No estoy seguro de tu pregunta específica, pero puedo ayudarte con información sobre:\n\n" +
-           "📱 Nuestros servicios y soluciones\n" +
-           "💼 Información sobre la empresa\n" +
+      // Respuesta por defecto
+    return {      text: "¡Hola! 👋 No estoy seguro de tu pregunta específica, pero puedo ayudarte con información sobre:\n\n" +
+           "🛠️ Nuestros servicios y soluciones\n" +
+           "🏢 Información sobre la empresa\n" +
            "💰 Precios y presupuestos\n" +
            "📞 Información de contacto\n\n" +
-           "¿Sobre cuál de estos temas te gustaría saber más?",
+           "¿Sobre cuál de estos temas te gustaría saber más? 😊",
       buttons: [
         "Servicios disponibles",
         "Información de la empresa",
@@ -351,10 +349,11 @@ También puedes usar nuestro formulario de contacto en la página web.`,
       lowerMessage.includes('automatización') ||
       lowerMessage.includes('automatizacion') ||
       lowerMessage.includes('cad') ||
-      lowerMessage.includes('cae') ||
-      lowerMessage.includes('robótica') ||
+      lowerMessage.includes('cae') ||      lowerMessage.includes('robótica') ||
       lowerMessage.includes('robotica') ||
-      lowerMessage.includes('renovable') ||      lowerMessage.includes('energía') ||
+      lowerMessage.includes('robot') ||
+      lowerMessage.includes('robots') ||
+      lowerMessage.includes('renovable') ||lowerMessage.includes('energía') ||
       lowerMessage.includes('eolica') ||
       lowerMessage.includes('certificaciones');
 
@@ -406,10 +405,11 @@ También puedes usar nuestro formulario de contacto en la página web.`,
       lowerText.includes('automatización') ||
       lowerText.includes('automatizacion') ||
       lowerText.includes('cad') ||
-      lowerText.includes('cae') ||
-      lowerText.includes('robótica') ||
+      lowerText.includes('cae') ||      lowerText.includes('robótica') ||
       lowerText.includes('robotica') ||
-      lowerText.includes('renovable') ||      lowerText.includes('energía') ||
+      lowerText.includes('robot') ||
+      lowerText.includes('robots') ||
+      lowerText.includes('renovable') ||lowerText.includes('energía') ||
       lowerText.includes('eolica') ||
       lowerText.includes('certificaciones');
 
