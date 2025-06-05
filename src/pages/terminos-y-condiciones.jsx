@@ -34,14 +34,14 @@ export default function TerminosYCondiciones() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">3. Propiedad Intelectual</h2>
             <p className="mb-4">
-              Todo el contenido de este sitio web, incluyendo textos, gráficos, logos, imágenes y software, está protegido por derechos de autor y otros derechos de propiedad intelectual.
+              Todo el contenido de este sitio web, incluyendo textos, gráficos, logos, imágenes y software, está protegido por derechos de autor y otros derechos de propiedad intelectual. El uso de software de terceros, como SolidWorks, HOMER Pro, TIA Portal y LabVIEW, está sujeto a los términos de licencia de sus respectivos desarrolladores. No reclamamos titularidad ni derechos sobre estos programas.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">4. Limitación de Responsabilidad</h2>
             <p className="mb-4">
-              InnovaTech no será responsable de ningún daño directo, indirecto, incidental, consecuente o punitivo que surja del uso o la imposibilidad de usar nuestros servicios.
+              InnovaTech no será responsable de ningún daño directo, indirecto, incidental, consecuente o punitivo que surja del uso o la imposibilidad de usar nuestros servicios. Asimismo, no nos hacemos responsables por fallos, errores o problemas derivados del uso de software de terceros.
             </p>
           </section>
 

@@ -26,6 +26,7 @@ export default function PoliticaPrivacidad() {
               <li>Se comunica con nosotros a través del formulario de contacto</li>
               <li>Se suscribe a nuestro boletín informativo</li>
               <li>Solicita información sobre nuestros servicios</li>
+              <li>Utiliza software de terceros a través de nuestros servicios. En estos casos, pueden aplicarse políticas de privacidad específicas de cada proveedor de software</li>
             </ul>
           </section>
 
@@ -39,6 +40,7 @@ export default function PoliticaPrivacidad() {
               <li>Mejorar nuestros servicios</li>
               <li>Enviar comunicaciones relevantes sobre nuestros servicios</li>
               <li>Cumplir con obligaciones legales</li>
+              <li>Cumplir con requisitos de uso y licenciamiento de software de terceros</li>
             </ul>
           </section>
 
@@ -60,6 +62,7 @@ export default function PoliticaPrivacidad() {
               <li>Solicitar la eliminación de sus datos personales</li>
               <li>Oponerse al procesamiento de sus datos personales</li>
               <li>Solicitar la portabilidad de sus datos</li>
+              <li>Solicitar información sobre el tratamiento de sus datos en relación con el uso de software de terceros</li>
             </ul>
           </section>
 
