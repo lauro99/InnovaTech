@@ -59,6 +59,7 @@ html {
   /* Opcional: mejora el look del scroll en navegadores Webkit */
   scrollbar-width: thin;
   scrollbar-color: #b3b3b3 #f0f0f0;
+  scroll-padding-top: 80px; /* Espacio adicional para elementos fijos como navegación */
 }
 
 /* Estilos personalizados para la barra de scroll en navegadores Webkit */

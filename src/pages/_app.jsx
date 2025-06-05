@@ -16,6 +16,14 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     // Configurar listeners para analíticas cuando cambia la ruta
     router.events.on("routeChangeComplete", handleRouteChange);
+    
+    // Desactivar el autoscroll al iniciar la página
+    if (window.location.hash) {
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 0);
+    }
+    
     return () => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };

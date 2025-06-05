@@ -608,10 +608,12 @@ export default function ProcesoTrabajo() {
                     />
                   </svg>
                   Contáctanos ahora
-                </motion.a>
-
-                <motion.a
-                  href="#servicios"
+                </motion.a>                <motion.a
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('servicios').scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  style={{ cursor: 'pointer' }}
                   className="px-8 py-5 border-2 border-white/30 backdrop-blur-sm text-white font-bold rounded-xl hover:bg-white/10 transition-all inline-flex items-center justify-center gap-2 text-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
