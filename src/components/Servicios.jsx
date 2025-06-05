@@ -34,6 +34,7 @@ import {
   BotMessageSquare,
   Leaf,
   Award,
+  BrainCircuit,
 } from "lucide-react";
 
 // Organizando servicios en filas para imitar el diseño de la imagen
@@ -41,13 +42,11 @@ const primeraFila = [
   {
     icon: "/electric.png",
     label: "Ingeniería Eléctrica",
-    categoria: "electric",
-    children: [
-      { icon: Network, label: "Redes domésticas" },
-      { icon: Network, label: "Redes industriales" },
-      { icon: Network, label: "diseño de circuitos" },
-      { icon: Network, label: "Analisis de circuitos" },
-
+    categoria: "electric",    children: [
+      { icon: HomeIcon, label: "Redes domésticas" },
+      { icon: Package, label: "Redes industriales" },
+      { icon: CircuitBoard, label: "Diseño de circuitos" },
+      { icon: Activity, label: "Análisis de circuitos" },
     ],
   },  {
     icon: "/desarrollo.png",
@@ -58,17 +57,16 @@ const primeraFila = [
       { icon: Code2, label: "Desarrollo de aplicaciones" },
       { icon: LayoutDashboard, label: "Desarrollo de páginas web" },
       { icon: Cpu, label: "Desarrollo y diseño de PCV" },
-      { icon: FlaskConical, label: "Análisis de circuitos" },
+      { icon: BrainCircuit, label: "Análisis de circuitos" },
       { icon: Package, label: "Impresión 3D" },
     ],
   },
   {
     icon: "/bio.png",
     label: "Biomédica",
-    categoria: "desarrollo",
-    children: [
-      { icon: Wrench, label: "Diseño de prótesis" },
-      { icon: Wrench, label: "Mantenimiento de máquinas" },
+    categoria: "desarrollo",    children: [
+      { icon: PenTool, label: "Diseño de prótesis" },
+      { icon: Settings, label: "Mantenimiento de máquinas" },
     ],
   },
   {
@@ -76,15 +74,14 @@ const primeraFila = [
     label: "Automatización",
     categoria: "robotica",
     children: [
-      { icon: LayoutDashboard, label: "Estaciones de trabajo" },
-      { icon: Bot, label: "Fines de brazo" },
+      { icon: LayoutDashboard, label: "Estaciones de trabajo" },      { icon: Settings, label: "Fines de brazo" },
       { icon: FlaskConical, label: "Investigación" },
       { icon: Eye, label: "Sistemas de visión" },
       { icon: Scissors, label: "Sistemas de corte de colada" },
-      { icon: Bot, label: "Programación de robots" },
+      { icon: BotMessageSquare, label: "Programación de robots" },
       { icon: Vibrate, label: "Bowl feeder" },
-      { icon: LayoutDashboard, label: "Tableros eléctricos" },
-      { icon: FlaskConical, label: "Simulaciones" },
+      { icon: CircuitBoard, label: "Tableros eléctricos" },
+      { icon: Laptop, label: "Simulaciones" },
     ],
   },
 ];
@@ -94,24 +91,22 @@ const segundaFila = [
     icon: "/cad.png",
     label: "Diseño CAD/CAE",
     categoria: "desarrollo",
-    children: [
-      { icon: RefreshCw, label: "Rediseño de piezas" },
+    children: [      { icon: PenTool, label: "Rediseño de piezas" },
       { icon: FileText, label: "Actualización de planos" },
       { icon: Package, label: "Diseño de moldes" },
-      { icon: Package, label: "Diseño de productos" },
-      { icon: Ruler, label: "Análisis de punto finito" },
-      { icon: Droplets, label: "CFD (Dinámica de fluidos por computadora)" },
+      { icon: PenTool, label: "Diseño de productos" },
+      { icon: Activity, label: "Análisis de punto finito" },
+      { icon: Wind, label: "CFD (Dinámica de fluidos por computadora)" },
     ],
   },
   {
     icon: "/robotica.png",
     label: "Robótica",
     categoria: "robotica",
-    children: [
-      { icon: HomeIcon, label: "Domótica" },
+    children: [      { icon: HomeIcon, label: "Domótica" },
       { icon: ShieldCheck, label: "Seguridad" },
       { icon: Package, label: "Máquinas expendedoras" },
-      { icon: Bot, label: "Programación de robots" },
+      { icon: BotMessageSquare, label: "Programación de robots" },
       { icon: Package, label: "Suministros" },
       { icon: FileText, label: "Propuestas" },
     ],
