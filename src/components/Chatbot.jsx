@@ -15,14 +15,44 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const messagesEndRef = useRef(null);
+  const [showWelcomeMessage, setShowWelcomeMessage] = useState(true);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);  const getBotResponse = (message) => {
+  }, [messages]);
+  
+  useEffect(() => {
+    // Mostrar mensaje de bienvenida cuando se abre el chat y no hay mensajes
+    if (isOpen && messages.length === 0 && showWelcomeMessage) {
+      handleWelcomeMessage();
+    }
+  }, [isOpen, messages.length, showWelcomeMessage]);
+  
+  const handleWelcomeMessage = () => {
+    const welcomeResponse = {
+      text: "¡Hola! 👋 Bienvenido al asistente virtual de InnovaTech ✨. Estoy aquí para ayudarte con cualquier pregunta o información que necesites. 🤖",
+      isBot: true,
+      buttons: [
+        "Servicios disponibles 🛠️",
+        "Información de la empresa 🏢",
+        "Precios y presupuestos 💰",
+        "Información de contacto 📞"
+      ]
+    };
+    
+    setMessages([welcomeResponse]);
+    setShowWelcomeMessage(false);
+  };
+  
+  const clearChat = () => {
+    setMessages([]);
+    setShowWelcomeMessage(true);
+  };
+
+  const getBotResponse = (message) => {
     const lowerMessage = message.toLowerCase();
     
     // Verificar saludo
@@ -240,22 +270,22 @@ Capacitación profesional para potenciar tus habilidades.`,
           "Volver al menú principal"
         ]
       };
-    }
-
-    // Verificar preguntas sobre la empresa
+    }    // Verificar preguntas sobre la empresa
     if (lowerMessage.includes('empresa') || lowerMessage.includes('compañía') || lowerMessage.includes('innovatech')) {
       return {
-        text: `InnovaTech es una empresa líder en soluciones tecnológicas innovadoras. Algunos datos importantes:
+        text: `InnovaTech es una empresa líder en soluciones tecnológicas innovadoras ✨. Algunos datos importantes:
 
 🎯 Misión: Transformar ideas en soluciones tecnológicas innovadoras
 👥 Más de 15 profesionales especializados
 🏆 Certificaciones internacionales
-🤝 Alianzas estratégicas con líderes tecnológicos`,
+🌟 Más de 10 años de experiencia
+🤝 Alianzas estratégicas con líderes tecnológicos
+🌎 Presencia en múltiples ciudades`,
         buttons: [
-          "Ver servicios",
-          "Contactar con ventas",
-          "Solicitar más información",
-          "Volver al menú principal"
+          "Ver servicios 🛠️",
+          "Contactar con ventas 📱",
+          "Solicitar más información 📋",
+          "Volver al menú principal 🏠"
         ]
       };
     }
@@ -278,22 +308,23 @@ Capacitación profesional para potenciar tus habilidades.`,
         ]
       };
     }
-    
-    // Verificar contacto general
+      // Verificar contacto general
     if (lowerMessage.includes('contacto') || lowerMessage.includes('contactar') || lowerMessage.includes('comunicar') || lowerMessage.includes('ubicación')) {      return {
-        text: `Puedes contactarnos de las siguientes maneras:
+        text: `¡Estamos listos para ayudarte! ✨ Puedes contactarnos de las siguientes maneras:
 
 📧 Email: ventas@innovatechmex.com
 📞 Teléfono: +52 221 429 0985
 🏢 Dirección: San Pedro Cholula, Puebla
+⏰ Horario: Lunes a Viernes de 9:00 a 18:00
+🌐 Sitio web: innovatechmex.com
 
-También puedes usar nuestro formulario de contacto en la página web.`,
+También puedes usar nuestro formulario de contacto en la página web. ¡Esperamos tu mensaje! 😊`,
         buttons: [
-          "Llamar ahora",
-          "Enviar email",
-          "Ver ubicación",
-          "Ver servicios",
-          "Volver al menú principal"
+          "Llamar ahora 📞",
+          "Enviar email 📧",
+          "Ver ubicación 🗺️",
+          "Ver servicios 🛠️",
+          "Volver al menú principal 🏠"
         ]
       };
     }
@@ -309,8 +340,7 @@ También puedes usar nuestro formulario de contacto en la página web.`,
           "Información de contacto"
         ]
       };
-    }
-      // Respuesta por defecto
+    }    // Respuesta por defecto
     return {      text: "¡Hola! 👋 No estoy seguro de tu pregunta específica, pero puedo ayudarte con información sobre:\n\n" +
            "🛠️ Nuestros servicios y soluciones\n" +
            "🏢 Información sobre la empresa\n" +
@@ -318,10 +348,10 @@ También puedes usar nuestro formulario de contacto en la página web.`,
            "📞 Información de contacto\n\n" +
            "¿Sobre cuál de estos temas te gustaría saber más? 😊",
       buttons: [
-        "Servicios disponibles",
-        "Información de la empresa",
-        "Precios y presupuestos",
-        "Información de contacto"
+        "Servicios disponibles 🛠️",
+        "Información de la empresa 🏢",
+        "Precios y presupuestos 💰",
+        "Información de contacto 📞"
       ]
     };
   };
@@ -355,18 +385,16 @@ También puedes usar nuestro formulario de contacto en la página web.`,
       lowerMessage.includes('robots') ||
       lowerMessage.includes('renovable') ||lowerMessage.includes('energía') ||
       lowerMessage.includes('eolica') ||
-      lowerMessage.includes('certificaciones');
-
-    // Si es el primer mensaje y no es una pregunta específica, mostrar saludo
+      lowerMessage.includes('certificaciones');    // Si es el primer mensaje y no es una pregunta específica, mostrar saludo
     if (messages.length === 0 && !isSpecificQuery) {
       newMessages.push({
-        text: "¡Hola! Soy el asistente virtual de InnovaTech. ¿En qué puedo ayudarte?",
+        text: "¡Hola! 👋 Soy el asistente virtual de InnovaTech ✨. ¿En qué puedo ayudarte hoy? 😊",
         isBot: true,
         buttons: [
-          "Servicios disponibles",
-          "Información de la empresa",
-          "Precios y presupuestos",
-          "Información de contacto"
+          "Servicios disponibles 🛠️",
+          "Información de la empresa 🏢",
+          "Precios y presupuestos 💰",
+          "Información de contacto 📞"
         ]
       });
       setMessages(newMessages);
@@ -411,19 +439,17 @@ También puedes usar nuestro formulario de contacto en la página web.`,
       lowerText.includes('robots') ||
       lowerText.includes('renovable') ||lowerText.includes('energía') ||
       lowerText.includes('eolica') ||
-      lowerText.includes('certificaciones');
-
-    // Si no hay mensajes previos y no es una selección específica, mostrar saludo
+      lowerText.includes('certificaciones');    // Si no hay mensajes previos y no es una selección específica, mostrar saludo
     if (messages.length === 0 && !isSpecificSelection) {
       const initialMessages = [
         {
-          text: "¡Hola! Soy el asistente virtual de InnovaTech. ¿En qué puedo ayudarte?",
+          text: "¡Hola! 👋 Soy el asistente virtual de InnovaTech ✨. ¿En qué puedo ayudarte hoy? 😊",
           isBot: true,
           buttons: [
-            "Servicios disponibles",
-            "Información de la empresa",
-            "Precios y presupuestos",
-            "Información de contacto"
+            "Servicios disponibles 🛠️",
+            "Información de la empresa 🏢",
+            "Precios y presupuestos 💰",
+            "Información de contacto 📞"
           ]
         },
         { text: buttonText, isBot: false }
@@ -499,11 +525,22 @@ También puedes usar nuestro formulario de contacto en la página web.`,
         className={`fixed bottom-20 right-4 w-96 h-[500px] bg-white rounded-lg shadow-xl z-50 flex flex-col ${
           isOpen ? 'pointer-events-auto' : 'pointer-events-none'
         }`}
-      >
-        {/* Chat header */}
-        <div className="p-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-t-lg">
-          <h3 className="text-white font-semibold">Asistente InnovaTech</h3>
-          <p className="text-white/80 text-sm">Responderemos tus dudas</p>
+      >        {/* Chat header */}
+        <div className="p-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-t-lg flex justify-between items-center">
+          <div>
+            <h3 className="text-white font-semibold">Asistente InnovaTech 🤖</h3>
+            <p className="text-white/80 text-sm">Responderemos tus dudas</p>
+          </div>
+          <button 
+            onClick={clearChat} 
+            className="text-white/90 hover:text-white text-sm bg-white/20 px-2 py-1 rounded flex items-center"
+            title="Limpiar chat"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+            Limpiar
+          </button>
         </div>
 
         {/* Messages container */}
