@@ -14,12 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export default function Layout({ children, title, description, keywords, image }) {
-  // Valores por defecto para SEO
   const defaultTitle = "InnovaTech - Soluciones Tecnológicas Innovadoras";
   const defaultDescription = "Ofrecemos servicios de última tecnología en desarrollo, robótica, energías renovables y más. Descubre cómo transformamos ideas en soluciones concretas.";
   const defaultKeywords = "innovatech, tecnología, robótica, desarrollo de software, energías renovables, automatización, certificaciones";
   const defaultImage = "/favicon.png";
-  const siteUrl = "https://innova-tech-beige.vercel.app/"; // Reemplaza con tu URL real
+  const siteUrl = "https://innova-tech-beige.vercel.app/";
 
   return (
     <>

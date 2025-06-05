@@ -8,9 +8,7 @@ export default function ServicioCard({ servicio }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [mounted, setMounted] = useState(false);
   const cardRef = useRef(null);
-  
-  // Reset expanded state when service changes (important for filtering)
-  useEffect(() => {
+    useEffect(() => {
     setIsExpanded(false);
   }, [servicio]);
 
@@ -18,8 +16,6 @@ export default function ServicioCard({ servicio }) {
     setMounted(true);
     return () => setMounted(false);
   }, []);
-
-  // Cerrar el menú cuando se hace clic fuera de la tarjeta
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (cardRef.current && !cardRef.current.contains(event.target)) {
@@ -35,8 +31,6 @@ export default function ServicioCard({ servicio }) {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isExpanded]);
-
-  // Variantes para animación de la tarjeta
   const cardVariants = {
     initial: { 
       opacity: 0, 
@@ -71,30 +65,26 @@ export default function ServicioCard({ servicio }) {
       }
     })
   };
-
-  // Asignar colores basados en categoría (para usar en el modal)
   let themeColor;
   switch(servicio.categoria) {
     case "electric":
-      themeColor = "#00C2FF"; // Azul
+      themeColor = "#00C2FF";
       break;
     case "desarrollo":
-      themeColor = "#00C2FF"; // Verde
+      themeColor = "#00C2FF";
       break;
     case "robotica":
-      themeColor = "#00C2FF"; // Azul oscuro
+      themeColor = "#00C2FF";
       break;
     case "renovable":
-      themeColor = "#00C2FF"; // Púrpura
+      themeColor = "#00C2FF";
       break;
     case "formacion":
-      themeColor = "#00C2FF"; // Naranja
+      themeColor = "#00C2FF";
       break;
     default:
       themeColor = "#00C2FF";
   }
-
-  // Renderizar un modal para los servicios hijos
   const renderModal = () => {
     if (!isParent || !isExpanded) return null;
     
@@ -160,15 +150,13 @@ export default function ServicioCard({ servicio }) {
         key={servicio.label} // Add key for proper animation reset
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
-      >        {/* Imagen circular */}
-        <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-white shadow-lg flex items-center justify-center overflow-hidden p-2">
+      >        {/* Imagen circular */}        <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-white shadow-lg flex items-center justify-center overflow-hidden p-2">
           <img 
             src={servicio.icon} 
             alt={servicio.label}
             className="w-16 h-16 md:w-20 md:h-20 object-contain"
-            loading="eager" // Eager loading for immediate visibility
+            loading="eager"
             onError={(e) => {
-              // Fallback if image fails to load
               e.target.src = "/default-service-icon.png";
               e.target.onerror = null;
             }}

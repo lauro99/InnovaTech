@@ -66,16 +66,13 @@ export default function Tecnologias() {
   
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  
-  // Función para navegar al siguiente item
-  const nextSlide = () => {
+    const nextSlide = () => {
     if (!isAnimating) {
       setIsAnimating(true);
       setCurrentIndex((prevIndex) => (prevIndex + 1) % tecnologias.length);
     }
   };
   
-  // Función para navegar al item anterior
   const prevSlide = () => {
     if (!isAnimating) {
       setIsAnimating(true);
@@ -85,7 +82,6 @@ export default function Tecnologias() {
     }
   };
   
-  // Reset de la animación
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsAnimating(false);
@@ -94,7 +90,6 @@ export default function Tecnologias() {
     return () => clearTimeout(timer);
   }, [currentIndex]);
   
-  // Auto rotación del carrusel
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();

@@ -37,7 +37,6 @@ import {
   BrainCircuit,
 } from "lucide-react";
 
-// Organizando servicios en filas para imitar el diseño de la imagen
 const primeraFila = [
   {
     icon: "/electric.png",
@@ -135,25 +134,21 @@ const segundaFila = [
   },
 ];
 
-// Lista plana de todos los servicios para filtrado
 const servicios = [...primeraFila, ...segundaFila];
 
 export default function Servicios() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [isChangingCategory, setIsChangingCategory] = useState(false);
   const [animationKey, setAnimationKey] = useState(0);
-  // Función para manejar el cambio de categoría con animación
+  
   const handleCategoryChange = (categoryId) => {
     setIsChangingCategory(true);
     setTimeout(() => {
       setActiveCategory(categoryId);
       setIsChangingCategory(false);
-      // Incrementar la animation key para forzar la re-renderización y resetear las animaciones
       setAnimationKey((prevKey) => prevKey + 1);
     }, 300);
   };
-
-  // Categorías para el filtrado
   const categorias = [
     { id: "all", nombre: "Todos los servicios", icono: null },
     { id: "electric", nombre: "Eléctrica", icono: Zap },
@@ -163,13 +158,11 @@ export default function Servicios() {
     { id: "formacion", nombre: "Formación", icono: GraduationCap },
   ];
 
-  // Conteo de servicios por categoría
   const contarServicios = (categoria) => {
     if (categoria === "all") return servicios.length;
     return servicios.filter((serv) => serv.categoria === categoria).length;
   };
 
-  // Filtrar servicios según categoría seleccionada
   const serviciosFiltrados =
     activeCategory === "all" || !activeCategory
       ? servicios

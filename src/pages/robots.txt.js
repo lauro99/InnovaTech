@@ -1,4 +1,3 @@
-// Genera un archivo robots.txt dinámico
 const generateRobotsTxt = () => {
   return `User-agent: *
 Allow: /
