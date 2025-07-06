@@ -36,7 +36,7 @@ const ScrollNav = () => {
         })
         .reduce((closest, section) => {
           return scrollPosition >= section.position && 
-                 section.position > closest.position ? section : closest;
+                section.position > closest.position ? section : closest;
         }, { id: sections[0].id, position: -Infinity });
       
       setActiveSection(currentSection.id);
