@@ -1,108 +1,200 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 const Aliados = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-
   const socios = [
     {
+      nombre: "METENCO",
+      descripcion: "Mantenimiento industrial y reparación de dispositivos y maquinaria especializada",
+      logo: "/partners/metenco.png",
+      initial: "M",
+      color: "bg-gradient-to-br from-orange-200 to-orange-300 text-orange-600",
+      borderColor: "border-orange-400",
+      hoverColor: "group-hover:shadow-orange-300"
+    },
+    {
       nombre: "Logiceer",
+      descripcion: "Soluciones logísticas con inteligencia artificial",
       logo: "/partners/logiceer.png",
-      descripcion: "Soluciones logísticas inteligentes",
-      color: "from-blue-400 to-cyan-500"
+      initial: "L",
+      color: "bg-gradient-to-br from-blue-200 to-blue-300 text-blue-600",
+      borderColor: "border-blue-400",
+      hoverColor: "group-hover:shadow-blue-300"
     },
     {
       nombre: "Vortex",
+      descripcion: "Tecnología industrial e IoT",
       logo: "/partners/vortex.png",
-      descripcion: "Innovación en tecnología industrial",
-      color: "from-purple-400 to-pink-500"
+      initial: "V",
+      color: "bg-gradient-to-br from-purple-200 to-purple-300 text-purple-600",
+      borderColor: "border-purple-400",
+      hoverColor: "group-hover:shadow-purple-300"
     },
     {
       nombre: "MT Performance",
+      descripcion: "Optimización empresarial y eficiencia operativa",
       logo: "/partners/mt-performance.png",
-      descripcion: "Optimización y rendimiento empresarial",
-      color: "from-green-400 to-emerald-500"
+      initial: "M",
+      color: "bg-gradient-to-br from-green-200 to-green-300 text-green-600",
+      borderColor: "border-green-400",
+      hoverColor: "group-hover:shadow-green-300"
     },
     {
       nombre: "Medibelle",
-      logo: "/partners/medibelle.png",
       descripcion: "Tecnología para el sector salud y belleza",
-      color: "from-orange-400 to-red-500"
+      logo: "/partners/medibelle.png",
+      initial: "M",
+      color: "bg-gradient-to-br from-pink-200 to-pink-300 text-pink-600",
+      borderColor: "border-pink-400",
+      hoverColor: "group-hover:shadow-pink-300"
     }
   ];
-
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-gray-100/25 bg-[size:20px_20px] pointer-events-none" />
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="container mx-auto px-4"
-      >
-        <div className="text-center mb-16 relative">
+    <section id="aliados" className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 relative overflow-hidden">
+      {/* Elementos decorativos de fondo */}
+      <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-blue-300/20 to-blue-400/20 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-60 h-60 bg-gradient-to-br from-purple-300/20 to-purple-400/20 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Encabezado de la sección */}
+        <div className="text-center mb-12">
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+            className="text-3xl font-bold mb-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-transparent bg-clip-text"
+            initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 mb-4"
           >
-            Socios y Aliados Estratégicos
+            Nuestros Aliados Estratégicos
           </motion.h2>
+          <div className="h-1.5 w-24 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-5 rounded-full"></div>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            className="text-sm text-gray-600 max-w-2xl mx-auto leading-relaxed"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-xl text-gray-600 max-w-2xl mx-auto"
           >
-            Uniendo fuerzas con líderes innovadores para transformar el futuro tecnológico
+            Colaboramos con empresas líderes en innovación tecnológica 
+            para ofrecer soluciones de alta calidad que transforman 
+            industrias y crean valor.
           </motion.p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        </div>        {/* Grid de socios */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10 max-w-5xl mx-auto mb-16">
           {socios.map((socio, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+            <motion.div 
+              key={index} 
+              className="flex flex-col items-center group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              onHoverStart={() => setHoveredIndex(index)}
-              onHoverEnd={() => setHoveredIndex(null)}
-              className="relative group"
             >
-              <div className={`
-                p-8 rounded-xl backdrop-blur-sm bg-white/90 shadow-xl 
-                transition-all duration-300 
-                ${hoveredIndex === index ? 'scale-105' : 'scale-100'}
-                border border-gray-100
-              `}>
-                <div className="h-36 flex items-center justify-center mb-6 relative">
-                  <div className={`
-                    absolute inset-0 rounded-full opacity-20 blur-xl bg-gradient-to-r ${socio.color}
-                    transition-opacity duration-300 
-                    ${hoveredIndex === index ? 'opacity-100' : 'opacity-20'}
-                  `} />
-                  <div className={`
-                    w-28 h-28 rounded-full flex items-center justify-center
-                    bg-gradient-to-r ${socio.color} p-1
-                    transform transition-transform duration-300
-                    ${hoveredIndex === index ? 'rotate-12' : 'rotate-0'}
-                  `}>
-                    <div className="bg-white rounded-full w-full h-full flex items-center justify-center">                      <span className={`text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${socio.color}`}>
-                        {socio.nombre.charAt(0)}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-3 text-center">{socio.nombre}</h3>                <p className="text-gray-600 text-center leading-relaxed">{socio.descripcion}</p>
+              <div 
+                className={`w-20 h-20 ${socio.color} ${socio.borderColor} border-2 rounded-full 
+                flex items-center justify-center mb-5 transition-all duration-300 
+                transform group-hover:scale-110 shadow-md ${socio.hoverColor} 
+                group-hover:shadow-lg relative overflow-hidden`}
+              >
+                <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[radial-gradient(circle_at_top_right,_transparent_30%,_currentColor)]"></div>
+                <span className="text-3xl font-bold">
+                  {socio.initial}
+                </span>
               </div>
+              <h3 className={`text-base font-semibold mb-2 text-center 
+                bg-gradient-to-r from-gray-700 to-gray-700 group-hover:from-blue-600 
+                group-hover:to-purple-600 bg-clip-text transition-all duration-300
+                group-hover:text-transparent`}>
+                {socio.nombre}
+              </h3>
+              <p className="text-xs text-gray-600 text-center max-w-[180px] leading-relaxed">
+                {socio.descripcion}
+              </p>
             </motion.div>
           ))}
-        </div>
-      </motion.div>
+        </div>        {/* Banner CTA con más color */}
+        <motion.div 
+          className="max-w-3xl mx-auto bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 
+            backdrop-blur-sm rounded-xl p-10 text-center border border-blue-200 shadow-xl 
+            shadow-blue-500/5 relative overflow-hidden"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          {/* Elementos decorativos */}
+          <div className="absolute -top-14 -left-14 w-28 h-28 bg-blue-500/20 rounded-full blur-xl"></div>
+          <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-purple-500/20 rounded-full blur-xl"></div>
+          
+          <motion.h3 
+            className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            ¿Interesado en una alianza estratégica?
+          </motion.h3>
+          <motion.p 
+            className="text-sm text-gray-600 mb-7 max-w-xl mx-auto leading-relaxed"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            Estamos abiertos a nuevas colaboraciones que impulsen la innovación y el crecimiento mutuo.
+          </motion.p>
+          <motion.a 
+            href="#contacto" 
+            className="inline-block px-7 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 
+              text-sm font-medium text-white rounded-lg hover:from-blue-600 hover:to-indigo-700 
+              transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-md shadow-blue-500/20 
+              hover:shadow-blue-600/30"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -3 }}
+          >
+            Hablemos de oportunidades
+          </motion.a>
+        </motion.div>
+      </div>
+      
+      {/* Divisor ondulado entre Aliados y Contacto */}
+      <div className="wave-divider relative w-full h-24 mt-16 overflow-hidden">
+        <svg 
+          className="absolute bottom-0 w-full h-full" 
+          viewBox="0 24 150 28" 
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <motion.path 
+              id="gentle-wave" 
+              d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+              initial={{ d: "M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" }}
+              animate={{ 
+                d: [
+                  "M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z",
+                  "M-160 34c30 0 58-8 88-8s 58 8 88 8 58-8 88-8 58 8 88 8 v44h-352z",
+                  "M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+                ] 
+              }}
+              transition={{ 
+                duration: 10,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </defs>
+          <g className="waves">
+            <use xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(79, 70, 229, 0.08)" />
+            <use xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(99, 102, 241, 0.1)" />
+            <use xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(129, 140, 248, 0.12)" />
+            <use xlinkHref="#gentle-wave" x="48" y="7" fill="rgba(255, 255, 255, 1)" />
+          </g>
+        </svg>
+      </div>
     </section>
   );
 };

@@ -5,7 +5,6 @@ import MVV from "../components/MVV";
 import Servicios from "../components/Servicios";
 import ProcesoTrabajo from "../components/ProcesoTrabajo";
 import Contacto from "../components/Contacto";
-import Tecnologias from "../components/Tecnologias";
 import Aliados from "../components/Aliados";
 
 export default function Home() {
@@ -20,7 +19,6 @@ export default function Home() {
       <About />
       <MVV />
       <Servicios />
-      <Tecnologias />
       <ProcesoTrabajo />
       <Aliados />
       <Contacto />

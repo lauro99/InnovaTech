@@ -2,7 +2,7 @@ import { Rocket } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Hero() {
-  return (    <section className="flex flex-col items-center justify-center py-28 md:py-36 gap-6 text-center bg-gradient-to-b from-[#00CBFA] to-transparent">
+  return (    <section id="hero" className="flex flex-col items-center justify-center py-28 md:py-36 gap-6 text-center bg-gradient-to-b from-[#00CBFA] to-transparent">
      
       <motion.div
         className="w-full h-[250px] md:h-[350px] lg:h-[400px] relative px-8 md:px-20 lg:px-16"

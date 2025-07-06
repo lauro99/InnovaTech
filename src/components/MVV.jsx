@@ -66,10 +66,8 @@ export default function MVV() {
       bgColor: "from-[#000052]/90 to-[#000052]",
       borderColor: "#00C2FF",
     },
-  ];
-
-  return (
-    <div className="relative bg-[#f5f9ff] py-40 overflow-hidden">
+  ];  return (
+    <section id="mvv" className="relative bg-[#f5f9ff] py-40 overflow-hidden">
       {/* Elementos decorativos tecnológicos */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full">
@@ -81,7 +79,7 @@ export default function MVV() {
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiMwMDAwNTIiIGZpbGwtb3BhY2l0eT0iMC4wMSIgZD0iTTAgMGg2MHY2MEgweiI+PC9wYXRoPjxwYXRoIGQ9Ik0zNiAxOGExIDEgMCAxIDEgMC0yIDEgMSAwIDAgMSAwIDJtMCA0MmExIDEgMCAxIDEgMC0yIDEgMSAwIDAgMSAwIDJNMTggMzZhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAybTQyIDBhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyIiBmaWxsPSIjMDBDMkZGIiBmaWxsLW9wYWNpdHk9IjAuMDgiPjwvcGF0aD48L2c+PC9zdmc+')]"></div>
         </div>
       </div>
-      <section className="max-w-6xl mx-auto py-16 px-4 relative z-10">
+      <div className="max-w-6xl mx-auto py-16 px-4 relative z-10">
         <motion.h2
           className="text-4xl md:text-5xl font-bold text-center text-[#000052] mb-16 relative"
           initial={{ opacity: 0, y: -20 }}
@@ -204,9 +202,9 @@ export default function MVV() {
             </motion.div>
           ))}
         </div>
-      </section>{" "}
-      {/* Circuito tecnológico en la parte inferior */}
-      <div className="absolute bottom-0 left-0 w-full"></div>
-    </div>
+      </div>
+
+      {/* Circuito tecnológico en la parte inferior */}      <div className="absolute bottom-0 left-0 w-full"></div>
+    </section>
   );
 }

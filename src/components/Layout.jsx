@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Head from "next/head";
 import Footer from "./Footer";
 import Chatbot from "./Chatbot";
+import ScrollNav from "./ScrollNav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,12 +49,12 @@ export default function Layout({ children, title, description, keywords, image }
       </Head>
       <div
         className={`${geistSans.className} ${geistMono.className} bg-white text-[#000052] min-h-screen flex flex-col`}
-      >
-        <main className="flex-grow">
+      >        <main className="flex-grow">
           {children}
         </main>
         <Footer />
         <Chatbot />
+        <ScrollNav />
       </div>
     </>
   );

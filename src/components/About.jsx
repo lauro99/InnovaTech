@@ -87,7 +87,7 @@ export default function About() {
         <div className="absolute top-0 right-0 w-[50%] h-full bg-white transform skew-x-12 translate-x-1/2" />
       </div>
       
-      <section className="relative py-20 px-4 max-w-7xl mx-auto">
+      <section id="about" className="relative py-20 px-4 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-start justify-between gap-12">
           <div className="max-w-xl">
             <motion.div
