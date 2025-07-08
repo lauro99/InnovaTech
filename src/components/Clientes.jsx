@@ -3,191 +3,351 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const Clientes = () => {
-  const clientes = [
+  const casosExito = [
     {
-      nombre: "Medibelle",
-      descripcion: "Implementación de sistema de gestión para clínicas estéticas",
+      id: 1,
+      cliente: "Medibelle",
       logo: "/partners/medibelle.png",
-      initial: "M",
-      color: "bg-gradient-to-br from-pink-200 to-pink-300 text-pink-600",
-      borderColor: "border-pink-400",
-      hoverColor: "group-hover:shadow-pink-300"
+      titulo: "Transformación Digital en Clínicas Estéticas",
+      categoria: "Salud y Belleza",
+      descripcion: "Implementación de plataforma integrada para gestión de pacientes, inventario y agenda médica con IA para recomendaciones personalizadas.",
+      resultados: [
+        "Reducción de 35% en tiempos de espera",
+        "Aumento del 42% en satisfacción del cliente",
+        "Optimización de inventario con reducción de costos del 22%"
+      ],
+      tecnologias: ["React", "Node.js", "AI/ML", "IoT", "Cloud"],
+      color: "from-pink-600 to-rose-500",
+      lightColor: "from-pink-50 to-rose-50",
+      accentColor: "group-hover:border-pink-400"
     },
     {
-      nombre: "MT Performance",
-      descripcion: "Automatización de procesos industriales y análisis de datos",
+      id: 2,
+      cliente: "MT Performance",
       logo: "/partners/MT_Performance (1).png",
-      initial: "M",
-      color: "bg-gradient-to-br from-green-200 to-green-300 text-green-600",
-      borderColor: "border-green-400",
-      hoverColor: "group-hover:shadow-green-300"
+      titulo: "Plataforma de Análisis Predictivo Industrial",
+      categoria: "Manufactura",
+      descripcion: "Desarrollo e implementación de sistema de análisis de datos y mantenimiento predictivo para optimizar procesos de fabricación.",
+      resultados: [
+        "Reducción del 47% en paradas no programadas",
+        "Incremento de productividad del 23%",
+        "ROI positivo en menos de 8 meses"
+      ],
+      tecnologias: ["Python", "TensorFlow", "BigData", "Industrial IoT", "AWS"],
+      color: "from-emerald-600 to-green-500",
+      lightColor: "from-emerald-50 to-green-50",
+      accentColor: "group-hover:border-emerald-400"
     },
     {
-      nombre: "METENCO",
-      descripcion: "Desarrollo de software para mantenimiento predictivo",
+      id: 3,
+      cliente: "METENCO",
       logo: "/partners/Metenco.png",
-      initial: "M",
-      color: "bg-gradient-to-br from-orange-200 to-orange-300 text-orange-600",
-      borderColor: "border-orange-400",
-      hoverColor: "group-hover:shadow-orange-300"
+      titulo: "Sistema Integrado de Mantenimiento Predictivo",
+      categoria: "Ingeniería",
+      descripcion: "Creación de software especializado para monitoreo y mantenimiento de maquinaria industrial con alertas en tiempo real.",
+      resultados: [
+        "Disminución del 53% en fallas de equipos críticos",
+        "Aumento de vida útil de equipos en un 28%",
+        "Ahorro anual de $450,000 en reparaciones"
+      ],
+      tecnologias: ["C#", ".NET", "SQL", "Edge Computing", "Azure"],
+      color: "from-amber-600 to-orange-500",
+      lightColor: "from-amber-50 to-orange-50",
+      accentColor: "group-hover:border-amber-400"
     }
   ];
-  
+
   return (
-    <section id="clientes" className="py-20 bg-gradient-to-br from-slate-50 via-gray-50 to-white relative overflow-hidden">
+    <section id="casos-exito" className="py-24 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
       {/* Elementos decorativos de fondo */}
-      <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-300/20 to-blue-400/20 rounded-full translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-60 h-60 bg-gradient-to-br from-purple-300/20 to-purple-400/20 rounded-full -translate-x-1/3 translate-y-1/3 blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-slate-900/0 to-slate-900/40"></div>
+      <div className="absolute top-0 left-0 w-full h-full">
+        <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-gradient-to-br from-blue-500/10 to-purple-500/10 blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-gradient-to-br from-cyan-500/10 to-blue-500/10 blur-3xl"></div>
+        <div className="absolute top-1/3 right-1/4 w-24 h-24 rounded-full bg-gradient-to-br from-amber-500/10 to-red-500/10 blur-3xl"></div>
+        <div className="absolute top-2/3 left-1/4 w-36 h-36 rounded-full bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 blur-3xl"></div>
+        
+        {/* Patrón de circuito como textura de fondo */}
+        <div className="w-full h-full opacity-5 bg-gradient-to-b from-blue-500/5 to-slate-800/5" 
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.2) 2%, transparent 0%), 
+                               radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.2) 2%, transparent 0%)`,
+              backgroundSize: '100px 100px'
+            }}></div>
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        {/* Encabezado de la sección */}
-        <div className="text-center mb-16">
-          <motion.h2 
-            className="text-3xl font-bold mb-3 bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 text-transparent bg-clip-text"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            Casos de Éxito
-          </motion.h2>
-          <div className="h-1.5 w-24 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto mb-5 rounded-full"></div>
-          <motion.p 
-            className="text-sm text-gray-600 max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Empresas que han confiado en nuestras soluciones tecnológicas para 
-            potenciar su crecimiento y transformación digital.
-          </motion.p>
-        </div>
-        
-        {/* Grid de clientes */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-14 max-w-5xl mx-auto mb-16">
-          {clientes.map((cliente, index) => (
+        {/* Encabezado de la sección con estilo distinto */}
+        <div className="max-w-4xl mx-auto mb-20">
+          <div className="flex flex-col items-start">
             <motion.div 
-              key={index} 
-              className="flex flex-col items-center group"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
+              className="flex items-center mb-4"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <div 
-                className={`w-40 h-40 ${cliente.borderColor} border-2 rounded-3xl 
-                flex items-center justify-center mb-6 transition-all duration-300 
-                transform group-hover:scale-105 shadow-lg ${cliente.hoverColor} 
-                group-hover:shadow-xl relative overflow-hidden ${
-                  cliente.nombre === "MT Performance" ? "bg-black" : 
-                  cliente.nombre === "METENCO" ? "bg-gradient-to-br from-orange-50 to-yellow-50" : "bg-white"
-                } p-5`}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
-                }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br opacity-5 from-white via-transparent to-transparent"></div>
-                {cliente.logo ? (
-                  <div className="relative w-full h-full flex items-center justify-center">
+              <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mr-4"></div>
+              <p className="text-cyan-400 font-semibold uppercase tracking-wider text-sm">Casos de éxito</p>
+            </motion.div>
+            
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Transformando <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">negocios</span> con tecnología de vanguardia
+            </motion.h2>
+            
+            <motion.p 
+              className="text-slate-300 text-lg mb-8"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              Descubre cómo nuestras soluciones tecnológicas han generado resultados medibles y significativos en empresas de diversos sectores.
+            </motion.p>
+            
+            <div className="grid grid-cols-3 gap-4 w-full max-w-lg">
+              <div className="flex flex-col items-center p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                <span className="text-3xl font-bold text-blue-400 mb-1">32+</span>
+                <span className="text-xs text-slate-400">Proyectos</span>
+              </div>
+              <div className="flex flex-col items-center p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                <span className="text-3xl font-bold text-cyan-400 mb-1">96%</span>
+                <span className="text-xs text-slate-400">Satisfacción</span>
+              </div>
+              <div className="flex flex-col items-center p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                <span className="text-3xl font-bold text-teal-400 mb-1">40M+</span>
+                <span className="text-xs text-slate-400">Ahorro generado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Casos de éxito en un formato diferente */}
+        <div className="space-y-16">
+          {casosExito.map((caso, index) => (
+            <motion.div 
+              key={caso.id} 
+              className="group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <div className="flex flex-col md:flex-row bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-slate-600 transition-all duration-300 shadow-xl">
+                {/* Columna izquierda con logo e info */}
+                <div className={`w-full md:w-1/3 bg-gradient-to-br ${caso.lightColor} p-8 flex flex-col items-center justify-center`}>
+                  <div className="mb-6 bg-white rounded-xl p-4 w-40 h-40 flex items-center justify-center shadow-lg" style={{
+                    background: caso.cliente === "MT Performance" ? "black" : "white",
+                    boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)"
+                  }}>
                     <Image 
-                      src={cliente.logo} 
-                      alt={`Logo de ${cliente.nombre}`}
-                      width={150}
-                      height={150}
+                      src={caso.logo} 
+                      alt={caso.cliente}
+                      width={130}
+                      height={130}
                       className="object-contain"
                       style={{ 
-                        maxWidth: '100%', 
-                        maxHeight: '100%',
-                        filter: cliente.nombre === "MT Performance" ? "brightness(1.2) contrast(1.1)" : 
-                               cliente.nombre === "METENCO" ? "contrast(1.1) saturate(1.05)" : "none"
+                        filter: caso.cliente === "MT Performance" ? "brightness(1.2)" : "none"
                       }}
                     />
                   </div>
-                ) : (
-                  <>
-                    <div className={`absolute inset-0 ${cliente.color}`}></div>
-                    <span className="text-3xl font-bold relative z-10">
-                      {cliente.initial}
-                    </span>
-                  </>
-                )}
+                  <h3 className="text-slate-900 font-bold text-xl mb-2 text-center">{caso.cliente}</h3>
+                  <p className="text-slate-700 text-sm mb-4 font-medium text-center">{caso.categoria}</p>
+                  
+                  <div className="bg-white/70 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                    </svg>
+                    <span className="text-xs font-medium text-slate-900">Proyecto Certificado</span>
+                  </div>
+                </div>
+                
+                {/* Columna derecha con detalles */}
+                <div className="w-full md:w-2/3 p-8 flex flex-col justify-between">
+                  <div>
+                    <div className="mb-6">
+                      <h4 className="text-xl md:text-2xl font-bold mb-4 text-white">{caso.titulo}</h4>
+                      <p className="text-slate-300 mb-6">{caso.descripcion}</p>
+                    </div>
+                    
+                    <div className="mb-8">
+                      <h5 className="text-sm font-semibold text-cyan-400 mb-3 flex items-center">
+                        <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                        </svg>
+                        RESULTADOS OBTENIDOS
+                      </h5>
+                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {caso.resultados.map((resultado, idx) => (
+                          <li key={idx} className="flex items-start">
+                            <svg className="w-5 h-5 text-cyan-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                            </svg>
+                            <span className="text-sm text-slate-300">{resultado}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-col md:flex-row items-start md:items-center justify-between pt-4 border-t border-slate-700">
+                    <div className="mb-4 md:mb-0">
+                      <p className="text-xs text-slate-400 mb-2">TECNOLOGÍAS IMPLEMENTADAS</p>
+                      <div className="flex flex-wrap gap-2">
+                        {caso.tecnologias.map((tech, idx) => (
+                          <span key={idx} className="text-xs py-1 px-2 bg-slate-700 text-slate-300 rounded-md">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <motion.button 
+                      className={`px-4 py-2 rounded-lg text-white text-sm font-medium bg-gradient-to-r ${caso.color} hover:shadow-lg transition-all duration-300 flex items-center`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      Ver caso completo
+                      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                      </svg>
+                    </motion.button>
+                  </div>
+                </div>
               </div>
-              <h3 className={`text-lg font-bold mb-3 text-center 
-                bg-gradient-to-r from-gray-800 to-gray-700 group-hover:from-indigo-600 
-                group-hover:to-cyan-600 bg-clip-text transition-all duration-300
-                group-hover:text-transparent tracking-wide`}>
-                {cliente.nombre}
-              </h3>
-              <p className="text-sm text-gray-600 text-center max-w-[280px] leading-relaxed">
-                {cliente.descripcion}
-              </p>
-              
-              <motion.button
-                className="mt-5 px-4 py-2 bg-gradient-to-r from-indigo-50 to-blue-50 text-indigo-700 
-                  rounded-lg text-xs font-medium border border-indigo-100 hover:from-indigo-100 
-                  hover:to-blue-100 transition-all duration-300"
-                whileHover={{ y: -2, boxShadow: "0 10px 25px -5px rgba(99, 102, 241, 0.15)" }}
-              >
-                Ver proyecto
-              </motion.button>
             </motion.div>
           ))}
         </div>
         
-        {/* Banner testimonios */}
+        {/* Sección de testimonios renovada */}
         <motion.div 
-          className="max-w-3xl mx-auto bg-gradient-to-r from-indigo-500/10 via-blue-500/10 to-cyan-500/10 
-            backdrop-blur-sm rounded-xl p-10 text-center border border-indigo-200 shadow-xl 
-            shadow-indigo-500/5 relative overflow-hidden"
-          initial={{ opacity: 0, y: 20 }}
+          className="mt-24 bg-gradient-to-r from-slate-800 to-slate-900 rounded-3xl p-12 relative overflow-hidden border border-slate-700"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
           {/* Elementos decorativos */}
-          <div className="absolute -top-14 -left-14 w-28 h-28 bg-indigo-500/20 rounded-full blur-xl"></div>
-          <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-cyan-500/20 rounded-full blur-xl"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl"></div>
           
-          <svg className="h-10 w-10 text-indigo-300 opacity-40 mx-auto mb-4" fill="currentColor" viewBox="0 0 32 32">
-            <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-          </svg>
-          
-          <motion.h3 
-            className="text-xl font-bold mb-4 text-gray-800"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            InnovaTech transformó nuestra operación con soluciones que realmente entienden nuestras necesidades.
-          </motion.h3>
-          <motion.p 
-            className="text-sm text-gray-600 mb-4 italic"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            "El equipo no solo entregó tecnología de punta, sino que se asoció con nosotros para entender nuestros objetivos de negocio y diseñar soluciones a la medida."
-          </motion.p>
-          <div className="flex items-center justify-center">
-            <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-              <span className="font-bold text-indigo-600">MP</span>
+          <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-start">
+            <div className="mb-10 lg:mb-0 lg:mr-16 lg:w-1/3">
+              <svg className="h-14 w-14 text-cyan-400 opacity-80 mb-8" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+              
+              <h3 className="text-3xl font-bold text-white mb-8">Lo que nuestros clientes dicen sobre nosotros</h3>
+              
+              <div className="flex items-center">
+                <div className="flex -space-x-2">
+                  <div className="w-10 h-10 rounded-full border-2 border-slate-800 flex items-center justify-center bg-white">
+                    <Image src="/partners/MT_Performance (1).png" width={32} height={32} alt="MT Performance" className="rounded-full" />
+                  </div>
+                  <div className="w-10 h-10 rounded-full border-2 border-slate-800 flex items-center justify-center bg-white">
+                    <Image src="/partners/medibelle.png" width={32} height={32} alt="Medibelle" className="rounded-full" />
+                  </div>
+                  <div className="w-10 h-10 rounded-full border-2 border-slate-800 flex items-center justify-center bg-white">
+                    <Image src="/partners/Metenco.png" width={32} height={32} alt="METENCO" className="rounded-full" />
+                  </div>
+                </div>
+                <div className="ml-4">
+                  <div className="flex items-center mb-1">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="text-sm text-slate-400">de más de 24 clientes</p>
+                </div>
+              </div>
             </div>
-            <div className="text-left">
-              <p className="text-sm font-semibold">Carlos Ramírez</p>
-              <p className="text-xs text-gray-500">Director de Tecnología, MT Performance</p>
+            
+            <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-slate-800/70 backdrop-blur-sm p-6 rounded-xl border border-slate-700 hover:border-slate-600 transition-all duration-300">
+                <p className="text-slate-300 mb-6">"El equipo de InnovaTech entendió nuestras necesidades desde el primer día. La implementación fue impecable y los resultados superaron nuestras expectativas."</p>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center mr-4">
+                    <Image src="/partners/MT_Performance (1).png" width={30} height={30} alt="MT Performance" 
+                           style={{ filter: "brightness(1.2)" }} />
+                  </div>
+                  <div>
+                    <p className="font-medium text-white text-sm">Carlos Ramírez</p>
+                    <p className="text-xs text-slate-400">Director de Tecnología, MT Performance</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-slate-800/70 backdrop-blur-sm p-6 rounded-xl border border-slate-700 hover:border-slate-600 transition-all duration-300">
+                <p className="text-slate-300 mb-6">"La solución personalizada que desarrollaron transformó completamente nuestra forma de trabajar, reduciendo costos y mejorando la experiencia de nuestros pacientes."</p>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-4">
+                    <Image src="/partners/medibelle.png" width={30} height={30} alt="Medibelle" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-white text-sm">Laura Méndez</p>
+                    <p className="text-xs text-slate-400">CEO, Medibelle</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="md:col-span-2 bg-gradient-to-r from-slate-800/80 to-slate-800/60 backdrop-blur-sm p-6 rounded-xl border border-slate-700 hover:border-slate-600 transition-all duration-300">
+                <p className="text-slate-300 mb-6">"La implementación del sistema de mantenimiento predictivo ha sido un cambio revolucionario para nuestra operación. La capacidad de prevenir fallas antes de que ocurran y la precisión de las alertas han superado todas nuestras expectativas."</p>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-4">
+                    <Image src="/partners/Metenco.png" width={30} height={30} alt="METENCO" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-white text-sm">Roberto Gutiérrez</p>
+                    <p className="text-xs text-slate-400">Gerente de Operaciones, METENCO</p>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+        </motion.div>
+        
+      </div>
+      
+      {/* CTA */}
+      <div className="mt-24 max-w-5xl mx-auto px-4">
+        <motion.div 
+          className="bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl overflow-hidden shadow-2xl relative"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <div className="absolute inset-0 bg-[url('/circuit-pattern-light.png')] mix-blend-soft-light opacity-20"></div>
+          <div className="p-12 md:p-16 relative z-10 flex flex-col md:flex-row md:items-center md:justify-between">
+            <div className="mb-8 md:mb-0 md:mr-8">
+              <h3 className="text-3xl font-bold text-white mb-4">¿Listo para transformar tu negocio?</h3>
+              <p className="text-blue-100">Descubre cómo nuestras soluciones tecnológicas pueden potenciar tu empresa.</p>
+            </div>
+            <motion.a 
+              href="#contacto"
+              className="inline-flex items-center px-8 py-4 bg-white text-blue-600 rounded-lg text-lg font-semibold shadow-lg hover:bg-blue-50 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Contactar ahora
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </motion.a>
           </div>
         </motion.div>
       </div>
       
       {/* Divisor ondulado entre Clientes y Contacto */}
-      <div className="wave-divider relative w-full h-24 mt-16 overflow-hidden">
+      <div className="wave-divider relative w-full h-24 mt-20 overflow-hidden">
         <svg 
           className="absolute bottom-0 w-full h-full" 
           viewBox="0 24 150 28" 
@@ -195,7 +355,7 @@ const Clientes = () => {
         >
           <defs>
             <motion.path 
-              id="gentle-wave" 
+              id="gentle-wave-contact" 
               d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
               initial={{ d: "M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" }}
               animate={{ 
@@ -213,10 +373,10 @@ const Clientes = () => {
             />
           </defs>
           <g className="waves">
-            <use xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(79, 70, 229, 0.08)" />
-            <use xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(99, 102, 241, 0.1)" />
-            <use xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(129, 140, 248, 0.12)" />
-            <use xlinkHref="#gentle-wave" x="48" y="7" fill="rgba(255, 255, 255, 1)" />
+            <use xlinkHref="#gentle-wave-contact" x="48" y="0" fill="rgba(255,255,255,0.05)" />
+            <use xlinkHref="#gentle-wave-contact" x="48" y="3" fill="rgba(255,255,255,0.07)" />
+            <use xlinkHref="#gentle-wave-contact" x="48" y="5" fill="rgba(255,255,255,0.1)" />
+            <use xlinkHref="#gentle-wave-contact" x="48" y="7" fill="rgba(255,255,255,1)" />
           </g>
         </svg>
       </div>
