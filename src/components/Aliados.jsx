@@ -20,7 +20,8 @@ const Aliados = () => {
       initial: "L",
       color: "bg-gradient-to-br from-blue-200 to-blue-300 text-blue-600",
       borderColor: "border-blue-400",
-      hoverColor: "group-hover:shadow-blue-300"
+      hoverColor: "group-hover:shadow-blue-300",
+      link: "https://www.logiceer.com/"
     },
     {
       nombre: "Vortex",
@@ -29,7 +30,8 @@ const Aliados = () => {
       initial: "V",
       color: "bg-gradient-to-br from-cyan-200 to-cyan-300 text-cyan-600",
       borderColor: "border-cyan-400",
-      hoverColor: "group-hover:shadow-cyan-300"
+      hoverColor: "group-hover:shadow-cyan-300",
+      link: "https://vortexdevops.com/"
     },
     {
       nombre: "MT Performance",
@@ -38,7 +40,8 @@ const Aliados = () => {
       initial: "M",
       color: "bg-gradient-to-br from-green-200 to-green-300 text-green-600",
       borderColor: "border-green-400",
-      hoverColor: "group-hover:shadow-green-300"
+      hoverColor: "group-hover:shadow-green-300",
+      link: "https://www.facebook.com/MTperformanc"
     },
     {
       nombre: "Medibelle",
@@ -47,7 +50,8 @@ const Aliados = () => {
       initial: "M",
       color: "bg-gradient-to-br from-pink-200 to-pink-300 text-pink-600",
       borderColor: "border-pink-400",
-      hoverColor: "group-hover:shadow-pink-300"
+      hoverColor: "group-hover:shadow-pink-300",
+      link: "https://www.facebook.com/profile.php?id=61573729910418"
     }
   ];
   return (
@@ -111,19 +115,37 @@ const Aliados = () => {
                 <div className="absolute inset-0 bg-gradient-to-br opacity-5 from-white via-transparent to-transparent"></div>
                 {socio.logo ? (
                   <div className="relative w-full h-full flex items-center justify-center">
-                    <Image 
-                      src={socio.logo} 
-                      alt={`Logo de ${socio.nombre}`}
-                      width={130}
-                      height={130}
-                      className={`object-contain ${socio.nombre === "METENCO" ? "max-w-[80%] max-h-[80%] sm:max-w-full sm:max-h-full" : "max-w-full max-h-full"}`}
-                      style={{ 
-                        filter: socio.nombre === "MT Performance" ? "brightness(1.2) contrast(1.1)" : 
-                               socio.nombre === "Logiceer" ? "contrast(1.05) saturate(1.1)" :
-                               socio.nombre === "Vortex" ? "brightness(1.2) contrast(1.1)" :
-                               socio.nombre === "METENCO" ? "contrast(1.1) saturate(1.05)" : "none"
-                      }}
-                    />
+                    {socio.link ? (
+                      <a href={socio.link} target="_blank" rel="noopener noreferrer group" className="w-full h-full flex items-center justify-center">
+                        <Image 
+                          src={socio.logo} 
+                          alt={`Logo de ${socio.nombre}`}
+                          width={130}
+                          height={130}
+                          className={`object-contain ${socio.nombre === "METENCO" ? "max-w-[80%] max-h-[80%] sm:max-w-full sm:max-h-full" : "max-w-full max-h-full"}`}
+                          style={{ 
+                            filter: socio.nombre === "MT Performance" ? "brightness(1.2) contrast(1.1)" : 
+                                   socio.nombre === "Logiceer" ? "contrast(1.05) saturate(1.1)" :
+                                   socio.nombre === "Vortex" ? "brightness(1.2) contrast(1.1)" :
+                                   socio.nombre === "METENCO" ? "contrast(1.1) saturate(1.05)" : "none"
+                          }}
+                        />
+                      </a>
+                    ) : (
+                      <Image 
+                        src={socio.logo} 
+                        alt={`Logo de ${socio.nombre}`}
+                        width={130}
+                        height={130}
+                        className={`object-contain ${socio.nombre === "METENCO" ? "max-w-[80%] max-h-[80%] sm:max-w-full sm:max-h-full" : "max-w-full max-h-full"}`}
+                        style={{ 
+                          filter: socio.nombre === "MT Performance" ? "brightness(1.2) contrast(1.1)" : 
+                                 socio.nombre === "Logiceer" ? "contrast(1.05) saturate(1.1)" :
+                                 socio.nombre === "Vortex" ? "brightness(1.2) contrast(1.1)" :
+                                 socio.nombre === "METENCO" ? "contrast(1.1) saturate(1.05)" : "none"
+                        }}
+                      />
+                    )}
                   </div>
                 ) : (
                   <>
@@ -134,15 +156,12 @@ const Aliados = () => {
                   </>
                 )}
               </div>
-              <h3 className={`text-base font-bold mb-2 text-center 
+              <h3 className={`text-base font-bold text-center 
                 bg-gradient-to-r from-gray-800 to-gray-700 group-hover:from-blue-600 
                 group-hover:to-purple-600 bg-clip-text transition-all duration-300
                 group-hover:text-transparent tracking-wide`}>
                 {socio.nombre}
               </h3>
-              <p className="text-xs text-gray-600 text-center max-w-[180px] leading-relaxed">
-                {socio.descripcion}
-              </p>
             </motion.div>
           ))}
         </div>        {/* Banner CTA con más color */}
