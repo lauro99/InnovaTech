@@ -345,41 +345,8 @@ const Clientes = () => {
           </div>
         </motion.div>
       </div>
-      
-      {/* Divisor ondulado entre Clientes y Contacto */}
-      <div className="wave-divider relative w-full h-24 mt-20 overflow-hidden">
-        <svg 
-          className="absolute bottom-0 w-full h-full" 
-          viewBox="0 24 150 28" 
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <motion.path 
-              id="gentle-wave-contact" 
-              d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
-              initial={{ d: "M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" }}
-              animate={{ 
-                d: [
-                  "M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z",
-                  "M-160 34c30 0 58-8 88-8s 58 8 88 8 58-8 88-8 58 8 88 8 v44h-352z",
-                  "M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
-                ] 
-              }}
-              transition={{ 
-                duration: 10,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          </defs>
-          <g className="waves">
-            <use xlinkHref="#gentle-wave-contact" x="48" y="0" fill="rgba(255,255,255,0.05)" />
-            <use xlinkHref="#gentle-wave-contact" x="48" y="3" fill="rgba(255,255,255,0.07)" />
-            <use xlinkHref="#gentle-wave-contact" x="48" y="5" fill="rgba(255,255,255,0.1)" />
-            <use xlinkHref="#gentle-wave-contact" x="48" y="7" fill="rgba(255,255,255,1)" />
-          </g>
-        </svg>
-      </div>
+      {/* Espacio separador entre secciones */}
+      <div className="mt-20"></div>
     </section>
   );
 };
