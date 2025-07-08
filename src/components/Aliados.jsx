@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const Aliados = () => {
   const socios = [
@@ -24,16 +25,16 @@ const Aliados = () => {
     {
       nombre: "Vortex",
       descripcion: "Tecnología industrial e IoT",
-      logo: "/partners/vortex.png",
+      logo: "/partners/Vortex.png",
       initial: "V",
-      color: "bg-gradient-to-br from-purple-200 to-purple-300 text-purple-600",
-      borderColor: "border-purple-400",
-      hoverColor: "group-hover:shadow-purple-300"
+      color: "bg-gradient-to-br from-cyan-200 to-cyan-300 text-cyan-600",
+      borderColor: "border-cyan-400",
+      hoverColor: "group-hover:shadow-cyan-300"
     },
     {
       nombre: "MT Performance",
       descripcion: "Optimización empresarial y eficiencia operativa",
-      logo: "/partners/mt-performance.png",
+      logo: "/partners/MT_Performance (1).png",
       initial: "M",
       color: "bg-gradient-to-br from-green-200 to-green-300 text-green-600",
       borderColor: "border-green-400",
@@ -80,7 +81,7 @@ const Aliados = () => {
             industrias y crean valor.
           </motion.p>
         </div>        {/* Grid de socios */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10 max-w-5xl mx-auto mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-12 max-w-5xl mx-auto mb-16">
           {socios.map((socio, index) => (
             <motion.div 
               key={index} 
@@ -91,20 +92,52 @@ const Aliados = () => {
               viewport={{ once: true }}
             >
               <div 
-                className={`w-20 h-20 ${socio.color} ${socio.borderColor} border-2 rounded-full 
+                className={`w-36 h-36 ${socio.borderColor} border-2 rounded-2xl 
                 flex items-center justify-center mb-5 transition-all duration-300 
-                transform group-hover:scale-110 shadow-md ${socio.hoverColor} 
-                group-hover:shadow-lg relative overflow-hidden`}
+                transform group-hover:scale-110 shadow-lg ${socio.hoverColor} 
+                group-hover:shadow-xl relative overflow-hidden ${
+                  socio.nombre === "MT Performance" ? "bg-black" : 
+                  socio.nombre === "Logiceer" ? "bg-gradient-to-br from-slate-50 to-slate-100" :
+                  socio.nombre === "Vortex" ? "bg-[#062a35]" : "bg-white"
+                } p-4`}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                }}
               >
-                <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[radial-gradient(circle_at_top_right,_transparent_30%,_currentColor)]"></div>
-                <span className="text-3xl font-bold">
-                  {socio.initial}
-                </span>
+                <div className="absolute inset-0 bg-gradient-to-br opacity-5 from-white via-transparent to-transparent"></div>
+                {socio.logo ? (
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <Image 
+                      src={socio.logo} 
+                      alt={`Logo de ${socio.nombre}`}
+                      width={130}
+                      height={130}
+                      className="object-contain"
+                      style={{ 
+                        maxWidth: '100%', 
+                        maxHeight: '100%',
+                        filter: socio.nombre === "MT Performance" ? "brightness(1.2) contrast(1.1)" : 
+                               socio.nombre === "Logiceer" ? "contrast(1.05) saturate(1.1)" :
+                               socio.nombre === "Vortex" ? "brightness(1.2) contrast(1.1)" : "none"
+                      }}
+                    />
+                  </div>
+                ) : (
+                  <>
+                    <div className={`absolute inset-0 ${socio.color}`}></div>
+                    <span className="text-3xl font-bold relative z-10">
+                      {socio.initial}
+                    </span>
+                  </>
+                )}
               </div>
-              <h3 className={`text-base font-semibold mb-2 text-center 
-                bg-gradient-to-r from-gray-700 to-gray-700 group-hover:from-blue-600 
+              <h3 className={`text-base font-bold mb-2 text-center 
+                bg-gradient-to-r from-gray-800 to-gray-700 group-hover:from-blue-600 
                 group-hover:to-purple-600 bg-clip-text transition-all duration-300
-                group-hover:text-transparent`}>
+                group-hover:text-transparent tracking-wide`}>
                 {socio.nombre}
               </h3>
               <p className="text-xs text-gray-600 text-center max-w-[180px] leading-relaxed">
