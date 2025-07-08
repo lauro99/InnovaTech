@@ -7,7 +7,7 @@ const Aliados = () => {
     {
       nombre: "METENCO",
       descripcion: "Mantenimiento industrial y reparación de dispositivos y maquinaria especializada",
-      logo: "/partners/metenco.png",
+      logo: "/partners/Metenco.png",
       initial: "M",
       color: "bg-gradient-to-br from-orange-200 to-orange-300 text-orange-600",
       borderColor: "border-orange-400",
@@ -98,7 +98,8 @@ const Aliados = () => {
                 group-hover:shadow-xl relative overflow-hidden ${
                   socio.nombre === "MT Performance" ? "bg-black" : 
                   socio.nombre === "Logiceer" ? "bg-gradient-to-br from-slate-50 to-slate-100" :
-                  socio.nombre === "Vortex" ? "bg-[#062a35]" : "bg-white"
+                  socio.nombre === "Vortex" ? "bg-[#062a35]" :
+                  socio.nombre === "METENCO" ? "bg-gradient-to-br from-orange-50 to-amber-50" : "bg-white"
                 } p-4`}
                 style={{
                   display: 'flex',
@@ -121,7 +122,8 @@ const Aliados = () => {
                         maxHeight: '100%',
                         filter: socio.nombre === "MT Performance" ? "brightness(1.2) contrast(1.1)" : 
                                socio.nombre === "Logiceer" ? "contrast(1.05) saturate(1.1)" :
-                               socio.nombre === "Vortex" ? "brightness(1.2) contrast(1.1)" : "none"
+                               socio.nombre === "Vortex" ? "brightness(1.2) contrast(1.1)" :
+                               socio.nombre === "METENCO" ? "contrast(1.1) saturate(1.05)" : "none"
                       }}
                     />
                   </div>
@@ -194,7 +196,7 @@ const Aliados = () => {
         </motion.div>
       </div>
       
-      {/* Divisor ondulado entre Aliados y Contacto */}
+      {/* Divisor ondulado entre Aliados y Clientes */}
       <div className="wave-divider relative w-full h-24 mt-16 overflow-hidden">
         <svg 
           className="absolute bottom-0 w-full h-full" 
@@ -224,7 +226,7 @@ const Aliados = () => {
             <use xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(79, 70, 229, 0.08)" />
             <use xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(99, 102, 241, 0.1)" />
             <use xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(129, 140, 248, 0.12)" />
-            <use xlinkHref="#gentle-wave" x="48" y="7" fill="rgba(255, 255, 255, 1)" />
+            <use xlinkHref="#gentle-wave" x="48" y="7" fill="rgba(240, 245, 250, 1)" />
           </g>
         </svg>
       </div>
