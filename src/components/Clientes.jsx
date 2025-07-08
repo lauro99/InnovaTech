@@ -279,8 +279,8 @@ const Clientes = () => {
                            style={{ filter: "brightness(1.2)" }} />
                   </div>
                   <div>
-                    <p className="font-medium text-white text-sm">Carlos Ramírez</p>
-                    <p className="text-xs text-slate-400">Director de Tecnología, MT Performance</p>
+                    <p className="font-medium text-white text-sm">Ing. Mario</p>
+                    <p className="text-xs text-slate-400">CEO, MT Performance</p>
                   </div>
                 </div>
               </div>
@@ -292,7 +292,7 @@ const Clientes = () => {
                     <Image src="/partners/medibelle.png" width={30} height={30} alt="Medibelle" />
                   </div>
                   <div>
-                    <p className="font-medium text-white text-sm">Laura Méndez</p>
+                    <p className="font-medium text-white text-sm">Dra. Abigail</p>
                     <p className="text-xs text-slate-400">CEO, Medibelle</p>
                   </div>
                 </div>
@@ -306,7 +306,7 @@ const Clientes = () => {
                   </div>
                   <div>
                     <p className="font-medium text-white text-sm">Roberto Gutiérrez</p>
-                    <p className="text-xs text-slate-400">Gerente de Operaciones, METENCO</p>
+                    <p className="text-xs text-slate-400">CEO, METENCO</p>
                   </div>
                 </div>
               </div>
