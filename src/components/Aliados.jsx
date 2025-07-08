@@ -100,7 +100,7 @@ const Aliados = () => {
                   socio.nombre === "Logiceer" ? "bg-gradient-to-br from-slate-50 to-slate-100" :
                   socio.nombre === "Vortex" ? "bg-[#062a35]" :
                   socio.nombre === "METENCO" ? "bg-gradient-to-br from-orange-50 to-amber-50" : "bg-white"
-                } p-4`}
+                } p-2 sm:p-4`}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -116,10 +116,8 @@ const Aliados = () => {
                       alt={`Logo de ${socio.nombre}`}
                       width={130}
                       height={130}
-                      className="object-contain"
+                      className={`object-contain ${socio.nombre === "METENCO" ? "max-w-[80%] max-h-[80%] sm:max-w-full sm:max-h-full" : "max-w-full max-h-full"}`}
                       style={{ 
-                        maxWidth: '100%', 
-                        maxHeight: '100%',
                         filter: socio.nombre === "MT Performance" ? "brightness(1.2) contrast(1.1)" : 
                                socio.nombre === "Logiceer" ? "contrast(1.05) saturate(1.1)" :
                                socio.nombre === "Vortex" ? "brightness(1.2) contrast(1.1)" :
