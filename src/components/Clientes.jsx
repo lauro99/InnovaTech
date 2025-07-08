@@ -207,17 +207,6 @@ const Clientes = () => {
                         ))}
                       </div>
                     </div>
-                    
-                    <motion.button 
-                      className={`px-4 py-2 rounded-lg text-white text-sm font-medium bg-gradient-to-r ${caso.color} hover:shadow-lg transition-all duration-300 flex items-center`}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      Ver caso completo
-                      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                      </svg>
-                    </motion.button>
                   </div>
                 </div>
               </div>
