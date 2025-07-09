@@ -20,8 +20,7 @@ const Aliados = () => {
       initial: "L",
       color: "bg-gradient-to-br from-blue-200 to-blue-300 text-blue-600",
       borderColor: "border-blue-400",
-      hoverColor: "group-hover:shadow-blue-300",
-      link: "https://www.logiceer.com/"
+      hoverColor: "group-hover:shadow-blue-300"
     },
     {
       nombre: "Vortex",
@@ -30,8 +29,7 @@ const Aliados = () => {
       initial: "V",
       color: "bg-gradient-to-br from-cyan-200 to-cyan-300 text-cyan-600",
       borderColor: "border-cyan-400",
-      hoverColor: "group-hover:shadow-cyan-300",
-      link: "https://vortexdevops.com/"
+      hoverColor: "group-hover:shadow-cyan-300"
     },
     {
       nombre: "MT Performance",
@@ -40,8 +38,7 @@ const Aliados = () => {
       initial: "M",
       color: "bg-gradient-to-br from-green-200 to-green-300 text-green-600",
       borderColor: "border-green-400",
-      hoverColor: "group-hover:shadow-green-300",
-      link: "https://www.facebook.com/MTperformanc"
+      hoverColor: "group-hover:shadow-green-300"
     },
     {
       nombre: "Medibelle",
@@ -50,15 +47,16 @@ const Aliados = () => {
       initial: "M",
       color: "bg-gradient-to-br from-pink-200 to-pink-300 text-pink-600",
       borderColor: "border-pink-400",
-      hoverColor: "group-hover:shadow-pink-300",
-      link: "https://www.facebook.com/profile.php?id=61573729910418"
+      hoverColor: "group-hover:shadow-pink-300"
     }
   ];
   return (
-    <section id="aliados" className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 relative overflow-hidden">
-      {/* Elementos decorativos de fondo */}
-      <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-blue-300/20 to-blue-400/20 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-60 h-60 bg-gradient-to-br from-purple-300/20 to-purple-400/20 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
+    <section id="aliados" className="py-20 bg-gradient-to-b from-blue-100 via-blue-50 to-white relative overflow-hidden">
+      {/* Elementos decorativos de fondo azul */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiM5M2M1ZmQxMCIgc3Ryb2tlLXdpZHRoPSIwLjUiPjxwYXRoIGQ9Ik0tNS4wNSA1QTEwLjEgMTAuMSAwIDAgMSA1LjA1IC01TDQwLjA1IC01QTEwLjEgMTAuMSAwIDAgMSA1MC4wNSA1TDUwLjA1IDQwQTEwLjEgMTAuMSAwIDAgMSA0MC4wNSA1MEw1LjA1IDUwQTEwLjEgMTAuMSAwIDAgMSAtNS4wNSA0MFoiLz48L2c+PC9zdmc+')] opacity-10"></div>
+      <div className="absolute top-0 left-0 w-full h-72 bg-gradient-to-b from-blue-300/20 to-transparent"></div>
+      <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-400/30 to-blue-500/20 rounded-full -translate-x-1/4 -translate-y-1/4 blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tr from-blue-400/20 to-cyan-300/10 rounded-full translate-x-1/4 translate-y-1/4 blur-3xl"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Encabezado de la sección */}
@@ -115,37 +113,19 @@ const Aliados = () => {
                 <div className="absolute inset-0 bg-gradient-to-br opacity-5 from-white via-transparent to-transparent"></div>
                 {socio.logo ? (
                   <div className="relative w-full h-full flex items-center justify-center">
-                    {socio.link ? (
-                      <a href={socio.link} target="_blank" rel="noopener noreferrer group" className="w-full h-full flex items-center justify-center">
-                        <Image 
-                          src={socio.logo} 
-                          alt={`Logo de ${socio.nombre}`}
-                          width={130}
-                          height={130}
-                          className={`object-contain ${socio.nombre === "METENCO" ? "max-w-[80%] max-h-[80%] sm:max-w-full sm:max-h-full" : "max-w-full max-h-full"}`}
-                          style={{ 
-                            filter: socio.nombre === "MT Performance" ? "brightness(1.2) contrast(1.1)" : 
-                                   socio.nombre === "Logiceer" ? "contrast(1.05) saturate(1.1)" :
-                                   socio.nombre === "Vortex" ? "brightness(1.2) contrast(1.1)" :
-                                   socio.nombre === "METENCO" ? "contrast(1.1) saturate(1.05)" : "none"
-                          }}
-                        />
-                      </a>
-                    ) : (
-                      <Image 
-                        src={socio.logo} 
-                        alt={`Logo de ${socio.nombre}`}
-                        width={130}
-                        height={130}
-                        className={`object-contain ${socio.nombre === "METENCO" ? "max-w-[80%] max-h-[80%] sm:max-w-full sm:max-h-full" : "max-w-full max-h-full"}`}
-                        style={{ 
-                          filter: socio.nombre === "MT Performance" ? "brightness(1.2) contrast(1.1)" : 
-                                 socio.nombre === "Logiceer" ? "contrast(1.05) saturate(1.1)" :
-                                 socio.nombre === "Vortex" ? "brightness(1.2) contrast(1.1)" :
-                                 socio.nombre === "METENCO" ? "contrast(1.1) saturate(1.05)" : "none"
-                        }}
-                      />
-                    )}
+                    <Image 
+                      src={socio.logo} 
+                      alt={`Logo de ${socio.nombre}`}
+                      width={130}
+                      height={130}
+                      className={`object-contain ${socio.nombre === "METENCO" ? "max-w-[80%] max-h-[80%] sm:max-w-full sm:max-h-full" : "max-w-full max-h-full"}`}
+                      style={{ 
+                        filter: socio.nombre === "MT Performance" ? "brightness(1.2) contrast(1.1)" : 
+                               socio.nombre === "Logiceer" ? "contrast(1.05) saturate(1.1)" :
+                               socio.nombre === "Vortex" ? "brightness(1.2) contrast(1.1)" :
+                               socio.nombre === "METENCO" ? "contrast(1.1) saturate(1.05)" : "none"
+                      }}
+                    />
                   </div>
                 ) : (
                   <>
@@ -213,7 +193,7 @@ const Aliados = () => {
         </motion.div>
       </div>
       
-      {/* Divisor ondulado entre Aliados y Clientes */}
+      {/* Divisor ondulado entre Aliados y Clientes - Versión azul */}
       <div className="wave-divider relative w-full h-24 mt-16 overflow-hidden">
         <svg 
           className="absolute bottom-0 w-full h-full" 
@@ -240,9 +220,9 @@ const Aliados = () => {
             />
           </defs>
           <g className="waves">
-            <use xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(79, 70, 229, 0.08)" />
-            <use xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(99, 102, 241, 0.1)" />
-            <use xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(129, 140, 248, 0.12)" />
+            <use xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(59, 130, 246, 0.08)" />
+            <use xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(96, 165, 250, 0.1)" />
+            <use xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(147, 197, 253, 0.12)" />
             <use xlinkHref="#gentle-wave" x="48" y="7" fill="rgba(240, 245, 250, 1)" />
           </g>
         </svg>
