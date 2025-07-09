@@ -51,18 +51,25 @@ const Aliados = () => {
     }
   ];
   return (
-    <section id="aliados" className="py-20 bg-gradient-to-b from-blue-100 via-blue-50 to-white relative overflow-hidden">
-      {/* Elementos decorativos de fondo azul */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiM5M2M1ZmQxMCIgc3Ryb2tlLXdpZHRoPSIwLjUiPjxwYXRoIGQ9Ik0tNS4wNSA1QTEwLjEgMTAuMSAwIDAgMSA1LjA1IC01TDQwLjA1IC01QTEwLjEgMTAuMSAwIDAgMSA1MC4wNSA1TDUwLjA1IDQwQTEwLjEgMTAuMSAwIDAgMSA0MC4wNSA1MEw1LjA1IDUwQTEwLjEgMTAuMSAwIDAgMSAtNS4wNSA0MFoiLz48L2c+PC9zdmc+')] opacity-10"></div>
-      <div className="absolute top-0 left-0 w-full h-72 bg-gradient-to-b from-blue-300/20 to-transparent"></div>
-      <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-400/30 to-blue-500/20 rounded-full -translate-x-1/4 -translate-y-1/4 blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tr from-blue-400/20 to-cyan-300/10 rounded-full translate-x-1/4 translate-y-1/4 blur-3xl"></div>
+    <section id="aliados" className="py-20 relative overflow-hidden bg-gradient-to-br from-[#000052]/95 via-[#000052]/85 to-[#000052]/80">
+      {/* Elementos decorativos de fondo mejorados con los nuevos colores */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMzAgMzBtLTI4IDBhMjggMjggMCAxIDAgNTYgMCAyOCAyOCAwIDEgMC01NiAweiIgc3Ryb2tlPSIjMDBFQ0ZFMjAiIHN0cm9rZS13aWR0aD0iMC41Ii8+PC9zdmc+')] opacity-20"></div>
+      
+      {/* Formas abstractas modernas con blur usando los nuevos colores */}
+      <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#00ECFE]/10 to-transparent"></div>
+      <div className="absolute top-20 left-40 w-80 h-80 rounded-full bg-gradient-to-br from-[#00ECFE]/15 to-[#C599B]/10 blur-3xl"></div>
+      <div className="absolute bottom-20 right-40 w-96 h-96 rounded-full bg-gradient-to-bl from-[#C599B]/10 to-[#00ECFE]/15 blur-3xl"></div>
+      <div className="absolute top-1/3 right-1/4 w-60 h-60 rounded-full bg-gradient-to-r from-[#00ECFE]/15 to-[#C599B]/10 blur-2xl"></div>
+      <div className="absolute bottom-1/3 left-1/4 w-72 h-72 rounded-full bg-gradient-to-tr from-[#C599B]/10 to-[#00ECFE]/5 blur-3xl"></div>
+      
+      {/* Malla sutil con los nuevos colores */}
+      <div className="absolute inset-0 bg-custom-grid opacity-15"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Encabezado de la sección */}
         <div className="text-center mb-12">
           <motion.h2 
-            className="text-3xl font-bold mb-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-transparent bg-clip-text"
+            className="text-3xl font-bold mb-3 bg-gradient-to-r from-[#00ECFE] via-white to-[#C599B] text-transparent bg-clip-text"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -70,9 +77,9 @@ const Aliados = () => {
           >
             Nuestros Aliados Estratégicos
           </motion.h2>
-          <div className="h-1.5 w-24 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-5 rounded-full"></div>
+          <div className="h-1.5 w-24 bg-gradient-to-r from-[#00ECFE] to-[#C599B] mx-auto mb-5 rounded-full"></div>
           <motion.p 
-            className="text-sm text-gray-600 max-w-2xl mx-auto leading-relaxed"
+            className="text-sm text-gray-200 max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -94,20 +101,21 @@ const Aliados = () => {
               viewport={{ once: true }}
             >
               <div 
-                className={`w-36 h-36 ${socio.borderColor} border-2 rounded-2xl 
+                className={`w-36 h-36 border-2 rounded-2xl 
                 flex items-center justify-center mb-5 transition-all duration-300 
-                transform group-hover:scale-110 shadow-lg ${socio.hoverColor} 
+                transform group-hover:scale-110 shadow-lg 
                 group-hover:shadow-xl relative overflow-hidden ${
-                  socio.nombre === "MT Performance" ? "bg-black" : 
-                  socio.nombre === "Logiceer" ? "bg-gradient-to-br from-slate-50 to-slate-100" :
-                  socio.nombre === "Vortex" ? "bg-[#062a35]" :
-                  socio.nombre === "METENCO" ? "bg-gradient-to-br from-orange-50 to-amber-50" : "bg-white"
+                  socio.nombre === "MT Performance" ? "bg-black border-[#00ECFE]/70 group-hover:shadow-[#00ECFE]/40" : 
+                  socio.nombre === "Logiceer" ? "bg-gradient-to-br from-slate-50 to-slate-100 border-[#00ECFE]/70 group-hover:shadow-[#00ECFE]/40" :
+                  socio.nombre === "Vortex" ? "bg-[#062a35] border-[#00ECFE]/70 group-hover:shadow-[#00ECFE]/40" :
+                  socio.nombre === "METENCO" ? "bg-gradient-to-br from-orange-50 to-amber-50 border-[#C599B]/70 group-hover:shadow-[#C599B]/40" : 
+                  "bg-white border-[#C599B]/70 group-hover:shadow-[#C599B]/40"
                 } p-2 sm:p-4`}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
                 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br opacity-5 from-white via-transparent to-transparent"></div>
@@ -137,29 +145,30 @@ const Aliados = () => {
                 )}
               </div>
               <h3 className={`text-base font-bold text-center 
-                bg-gradient-to-r from-gray-800 to-gray-700 group-hover:from-blue-600 
-                group-hover:to-purple-600 bg-clip-text transition-all duration-300
-                group-hover:text-transparent tracking-wide`}>
+                text-white group-hover:bg-gradient-to-r group-hover:from-[#00ECFE] 
+                group-hover:to-[#C599B] group-hover:text-transparent group-hover:bg-clip-text 
+                transition-all duration-300 tracking-wide`}>
                 {socio.nombre}
               </h3>
             </motion.div>
           ))}
         </div>        {/* Banner CTA con más color */}
         <motion.div 
-          className="max-w-3xl mx-auto bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 
-            backdrop-blur-sm rounded-xl p-10 text-center border border-blue-200 shadow-xl 
-            shadow-blue-500/5 relative overflow-hidden"
+          className="max-w-3xl mx-auto bg-gradient-to-r from-[#000052]/60 via-[#C599B]/30 to-[#000052]/60 
+            backdrop-blur-sm rounded-xl p-10 text-center border border-[#00ECFE]/30 shadow-xl 
+            shadow-[#00ECFE]/15 relative overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          {/* Elementos decorativos */}
-          <div className="absolute -top-14 -left-14 w-28 h-28 bg-blue-500/20 rounded-full blur-xl"></div>
-          <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-purple-500/20 rounded-full blur-xl"></div>
+          {/* Elementos decorativos con los nuevos colores */}
+          <div className="absolute -top-14 -left-14 w-36 h-36 bg-[#00ECFE]/25 rounded-full blur-xl"></div>
+          <div className="absolute -bottom-10 -right-10 w-28 h-28 bg-[#C599B]/25 rounded-full blur-xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-32 bg-[#00ECFE]/10 rounded-full blur-3xl"></div>
           
           <motion.h3 
-            className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text"
+            className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#00ECFE] to-white text-transparent bg-clip-text"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -168,7 +177,7 @@ const Aliados = () => {
             ¿Interesado en una alianza estratégica?
           </motion.h3>
           <motion.p 
-            className="text-sm text-gray-600 mb-7 max-w-xl mx-auto leading-relaxed"
+            className="text-sm text-gray-200 mb-7 max-w-xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -178,10 +187,10 @@ const Aliados = () => {
           </motion.p>
           <motion.a 
             href="#contacto" 
-            className="inline-block px-7 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 
-              text-sm font-medium text-white rounded-lg hover:from-blue-600 hover:to-indigo-700 
-              transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-md shadow-blue-500/20 
-              hover:shadow-blue-600/30"
+            className="inline-block px-7 py-3 bg-gradient-to-r from-[#00ECFE] to-[#C599B] 
+              text-sm font-medium text-[#000052] font-bold rounded-lg hover:from-[#00ECFE] hover:to-[#C599B]/90 
+              transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-md shadow-[#00ECFE]/30 
+              hover:shadow-[#C599B]/40"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -193,7 +202,7 @@ const Aliados = () => {
         </motion.div>
       </div>
       
-      {/* Divisor ondulado entre Aliados y Clientes - Versión azul */}
+      {/* Divisor ondulado mejorado con los nuevos colores */}
       <div className="wave-divider relative w-full h-24 mt-16 overflow-hidden">
         <svg 
           className="absolute bottom-0 w-full h-full" 
@@ -220,10 +229,10 @@ const Aliados = () => {
             />
           </defs>
           <g className="waves">
-            <use xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(59, 130, 246, 0.08)" />
-            <use xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(96, 165, 250, 0.1)" />
-            <use xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(147, 197, 253, 0.12)" />
-            <use xlinkHref="#gentle-wave" x="48" y="7" fill="rgba(240, 245, 250, 1)" />
+            <use xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(0, 236, 254, 0.15)" />
+            <use xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(197, 153, 176, 0.12)" />
+            <use xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(0, 236, 254, 0.08)" />
+            <use xlinkHref="#gentle-wave" x="48" y="7" fill="white" />
           </g>
         </svg>
       </div>
