@@ -51,7 +51,7 @@ const Aliados = () => {
     }
   ];
   return (
-    <section id="aliados" className="py-20 relative overflow-hidden bg-gradient-to-br from-[#000052]/95 via-[#000052]/85 to-[#000052]/80">
+    <section id="aliados" className="py-20 relative overflow-hidden bg-[#000052]">
       {/* Elementos decorativos de fondo mejorados con los nuevos colores */}
       <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMzAgMzBtLTI4IDBhMjggMjggMCAxIDAgNTYgMCAyOCAyOCAwIDEgMC01NiAweiIgc3Ryb2tlPSIjMDBFQ0ZFMjAiIHN0cm9rZS13aWR0aD0iMC41Ii8+PC9zdmc+')] opacity-20"></div>
       
@@ -105,9 +105,9 @@ const Aliados = () => {
                 flex items-center justify-center mb-5 transition-all duration-300 
                 transform group-hover:scale-110 shadow-lg 
                 group-hover:shadow-xl relative overflow-hidden ${
-                  socio.nombre === "MT Performance" ? "bg-black border-[#00ECFE]/70 group-hover:shadow-[#00ECFE]/40" : 
+                  socio.nombre === "MT Performance" ? "bg-[#000052] border-[#00ECFE]/70 group-hover:shadow-[#00ECFE]/40" : 
                   socio.nombre === "Logiceer" ? "bg-gradient-to-br from-slate-50 to-slate-100 border-[#00ECFE]/70 group-hover:shadow-[#00ECFE]/40" :
-                  socio.nombre === "Vortex" ? "bg-[#062a35] border-[#00ECFE]/70 group-hover:shadow-[#00ECFE]/40" :
+                  socio.nombre === "Vortex" ? "bg-[#000052] border-[#00ECFE]/70 group-hover:shadow-[#00ECFE]/40" :
                   socio.nombre === "METENCO" ? "bg-gradient-to-br from-orange-50 to-amber-50 border-[#C599B]/70 group-hover:shadow-[#C599B]/40" : 
                   "bg-white border-[#C599B]/70 group-hover:shadow-[#C599B]/40"
                 } p-2 sm:p-4`}
@@ -154,7 +154,7 @@ const Aliados = () => {
           ))}
         </div>        {/* Banner CTA con más color */}
         <motion.div 
-          className="max-w-3xl mx-auto bg-gradient-to-r from-[#000052]/60 via-[#C599B]/30 to-[#000052]/60 
+          className="max-w-3xl mx-auto bg-[#000052] 
             backdrop-blur-sm rounded-xl p-10 text-center border border-[#00ECFE]/30 shadow-xl 
             shadow-[#00ECFE]/15 relative overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
@@ -163,8 +163,8 @@ const Aliados = () => {
           viewport={{ once: true }}
         >
           {/* Elementos decorativos con los nuevos colores */}
-          <div className="absolute -top-14 -left-14 w-36 h-36 bg-[#00ECFE]/25 rounded-full blur-xl"></div>
-          <div className="absolute -bottom-10 -right-10 w-28 h-28 bg-[#C599B]/25 rounded-full blur-xl"></div>
+          <div className="absolute -top-14 -left-14 w-36 h-36 bg-[#00ECFE]/20 rounded-full blur-xl"></div>
+          <div className="absolute -bottom-10 -right-10 w-28 h-28 bg-[#C599B]/20 rounded-full blur-xl"></div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-32 bg-[#00ECFE]/10 rounded-full blur-3xl"></div>
           
           <motion.h3 
@@ -174,7 +174,7 @@ const Aliados = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            ¿Interesado en una alianza estratégica?
+            ¿Listo para impulsar su negocio con tecnología de vanguardia?
           </motion.h3>
           <motion.p 
             className="text-sm text-gray-200 mb-7 max-w-xl mx-auto leading-relaxed"
@@ -183,21 +183,21 @@ const Aliados = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            Estamos abiertos a nuevas colaboraciones que impulsen la innovación y el crecimiento mutuo.
+            Nuestros especialistas pueden diseñar soluciones personalizadas para
+            satisfacer las necesidades específicas de su empresa.
           </motion.p>
           <motion.a 
-            href="#contacto" 
-            className="inline-block px-7 py-3 bg-gradient-to-r from-[#00ECFE] to-[#C599B] 
-              text-sm font-medium text-[#000052] font-bold rounded-lg hover:from-[#00ECFE] hover:to-[#C599B]/90 
-              transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-md shadow-[#00ECFE]/30 
-              hover:shadow-[#C599B]/40"
+            href="#servicios" 
+            className="inline-block px-7 py-3 bg-[#00ECFE] 
+              text-sm font-medium text-[#000052] font-bold rounded-lg hover:bg-[#00ECFE]/90
+              transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-md shadow-[#00ECFE]/30"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
             whileHover={{ y: -3 }}
           >
-            Hablemos de oportunidades
+            Ver servicios
           </motion.a>
         </motion.div>
       </div>
