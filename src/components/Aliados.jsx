@@ -126,13 +126,9 @@ const Aliados = () => {
                       alt={`Logo de ${socio.nombre}`}
                       width={130}
                       height={130}
-                      className={`object-contain w-full h-full`}
-                      style={{ 
-                        filter: socio.nombre === "MT Performance" ? "brightness(1.2) contrast(1.1)" : 
-                               socio.nombre === "Logiceer" ? "contrast(1.05) saturate(1.1)" :
-                               socio.nombre === "Vortex" ? "brightness(1.2) contrast(1.1)" :
-                               socio.nombre === "METENCO" ? "contrast(1.1) saturate(1.05)" : "none"
-                      }}
+                      layout="intrinsic"
+                      priority
+                      className="object-contain w-full h-full"
                     />
                   </div>
                 ) : (
