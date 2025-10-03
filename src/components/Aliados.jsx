@@ -126,7 +126,7 @@ const Aliados = () => {
                       alt={`Logo de ${socio.nombre}`}
                       width={130}
                       height={130}
-                      className={`object-contain ${socio.nombre === "METENCO" ? "max-w-[80%] max-h-[80%] sm:max-w-full sm:max-h-full" : "max-w-full max-h-full"}`}
+                      className={`object-contain w-full h-full`}
                       style={{ 
                         filter: socio.nombre === "MT Performance" ? "brightness(1.2) contrast(1.1)" : 
                                socio.nombre === "Logiceer" ? "contrast(1.05) saturate(1.1)" :
