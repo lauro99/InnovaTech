@@ -120,7 +120,11 @@ const Aliados = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br opacity-5 from-white via-transparent to-transparent"></div>
                 {socio.logo ? (
-                  <div className="relative w-full h-full flex items-center justify-center">
+                  <motion.div
+                    className="relative w-full h-full flex items-center justify-center"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
                     <Image 
                       src={socio.logo} 
                       alt={`Logo de ${socio.nombre}`}
@@ -130,7 +134,7 @@ const Aliados = () => {
                       priority
                       className="object-contain w-full h-full"
                     />
-                  </div>
+                  </motion.div>
                 ) : (
                   <>
                     <div className={`absolute inset-0 ${socio.color}`}></div>
